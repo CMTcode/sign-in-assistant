@@ -1,0 +1,8 @@
+# 是否开启
+enabled: true
+# name任意填 ，bduss 贴吧首页cookie里的BDUSS项目
+accounts:
+  - name: 小鱼
+    bduss: bbbbbbb
+  - name: 小鱼x
+    bduss: xxxxxxxxx
