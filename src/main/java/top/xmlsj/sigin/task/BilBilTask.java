@@ -25,7 +25,7 @@ import java.util.List;
 public class BilBilTask {
 
     private final DailyTask dailyTask;
-    @Async("bilbilasunc")
+    @Async("bilbilasync")
     public void run() {
         this.sigin();
     }

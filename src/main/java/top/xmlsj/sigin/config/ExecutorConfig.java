@@ -35,7 +35,7 @@ public class ExecutorConfig {
 
     }
 
-    @Bean("bilbilasunc")
+    @Bean("bilbilasync")
     public Executor bilbilExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         //配置核心线程数
