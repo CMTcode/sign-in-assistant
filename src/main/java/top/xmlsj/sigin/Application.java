@@ -20,7 +20,6 @@ public class Application {
         ApplicationContext applicationContext = SpringApplication.run(Application.class, args);
         // 签到线程
         applicationContext.getBean(MainTask.class).run();
-
     }
 
 }

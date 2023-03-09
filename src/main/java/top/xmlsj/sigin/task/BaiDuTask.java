@@ -1,6 +1,8 @@
 package top.xmlsj.sigin.task;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import top.xmlsj.sigin.baidu.service.SingInService;
 
 /**
  * Created on 2023/3/7.
@@ -8,6 +10,14 @@ import org.springframework.stereotype.Component;
  * @author Yang YaoWei
  */
 @Component
+@RequiredArgsConstructor
 public class BaiDuTask {
+
+    private final SingInService baiduService;
+
+
+    public void run() {
+        baiduService.autoSingin();
+    }
 
 }

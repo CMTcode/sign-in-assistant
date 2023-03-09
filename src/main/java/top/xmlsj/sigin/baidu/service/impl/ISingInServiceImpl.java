@@ -34,6 +34,7 @@ import java.util.List;
 public class ISingInServiceImpl implements SingInService {
 
 
+
     /**
      * 百度贴吧一键签到
      *
@@ -196,7 +197,7 @@ public class ISingInServiceImpl implements SingInService {
 
 
     @Override
-    @Async("taskasync")
+    @Async("baiduasync")
     public void autoSingin() {
         log.info(".....................获取百度贴吧配置........................");
         BaiduConfig baiduConfig = YmlUtil.readConfigYml("./config/baidu.yml", BaiduConfig.class);

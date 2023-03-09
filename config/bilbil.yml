@@ -3,6 +3,7 @@ enabled: false
 # name任意填 ，bduss 贴吧首页cookie里的BDUSS项目
 accounts:
   - name: 小鱼
-    bduss: bbbbbbb
-  - name: 小鱼x
-    bduss: xxxxxxxxx
+    DEDEUSERID: bbbbbbb
+    SESSDATA: bbbbbbb
+    BILI_JCT: bbbbbbb
+
