@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>top.xmlsj</groupId>
-    <artifactId>baidusigin</artifactId>
+    <artifactId>signin</artifactId>
     <version>0.1</version>
-    <name>sigin</name>
-    <description>sigin</description>
+    <name>signin</name>
+    <description>signin</description>
     <properties>
         <java.version>8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -20,6 +20,8 @@
         <!-- 三方包版本号   -->
         <unirest.vaersion>3.14.2</unirest.vaersion>
         <fastjson.version>2.0.20</fastjson.version>
+        <hutool.version>5.8.12</hutool.version>
+        <yumbo-music.version>1.2.3</yumbo-music.version>
     </properties>
     <dependencies>
         <dependency>
@@ -47,11 +49,11 @@
             <artifactId>unirest-java</artifactId>
             <version>${unirest.vaersion}</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>javax.servlet</groupId>-->
-<!--            <artifactId>javax.servlet-api</artifactId>-->
-<!--            <scope>provided</scope>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>top.yumbo.music</groupId>
+            <artifactId>yumbo-music-utils</artifactId>
+            <version>${yumbo-music.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -60,6 +62,11 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>${fastjson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutool.version}</version>
         </dependency>
     </dependencies>
 
