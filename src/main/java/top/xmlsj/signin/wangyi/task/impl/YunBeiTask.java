@@ -7,9 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import top.xmlsj.signin.util.ExceptionConstants;
 import top.xmlsj.signin.wangyi.domain.entity.MusicUser;
-import top.xmlsj.signin.wangyi.domain.entity.WangYiConfig;
 import top.xmlsj.signin.wangyi.domain.pojo.CloudBeiRes;
-import top.xmlsj.signin.wangyi.service.CoreService;
+import top.xmlsj.signin.wangyi.service.MusicUserService;
 import top.xmlsj.signin.wangyi.task.Task;
 import top.xmlsj.signin.wangyi.util.NetEasseColudApi;
 
@@ -29,15 +28,14 @@ public class YunBeiTask implements Task {
     private static final String NAME = "云贝";
 
     @Resource
-    private CoreService coreService;
+    private MusicUserService userService;
 
     /**
      * 任务实现
      */
     @Override
     public void run() {
-        WangYiConfig config = coreService.readWangYiConfig();
-        List<MusicUser> accounts = config.getAccounts();
+        List<MusicUser> accounts = userService.list();
         Assert.notNull(accounts, ExceptionConstants.ACCOUNTS_NULL);
         accounts.forEach(u -> {
             log.info("用户：{} 开始云贝签到！！！", u.getName());

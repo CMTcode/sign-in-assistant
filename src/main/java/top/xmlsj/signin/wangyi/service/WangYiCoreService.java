@@ -7,7 +7,7 @@ import top.xmlsj.signin.wangyi.domain.entity.WangYiConfig;
  *
  * @author Yang YaoWei
  */
-public interface CoreService {
+public interface WangYiCoreService {
 
     WangYiConfig readWangYiConfig();
 }

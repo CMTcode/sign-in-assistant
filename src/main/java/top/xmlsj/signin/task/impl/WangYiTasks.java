@@ -6,9 +6,10 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import top.xmlsj.signin.util.CoreUtil;
 import top.xmlsj.signin.wangyi.domain.entity.WangYiConfig;
-import top.xmlsj.signin.wangyi.service.CoreService;
+import top.xmlsj.signin.wangyi.service.WangYiCoreService;
 import top.xmlsj.signin.wangyi.task.Task;
 import top.xmlsj.signin.wangyi.task.impl.ListenToSongsTask;
+import top.xmlsj.signin.wangyi.task.impl.WangYiLoginCheckTask;
 import top.xmlsj.signin.wangyi.task.impl.YunBeiTask;
 
 import java.util.ArrayList;
@@ -32,7 +33,8 @@ public class WangYiTasks {
 
     private final ListenToSongsTask listenToSongsTask;
 
-    private final CoreService coreService;
+    private final WangYiCoreService wangYiCoreService;
+    private final WangYiLoginCheckTask wangYiLoginCheckTask;
 
 
     @Async("wangyiasync")
@@ -42,12 +44,14 @@ public class WangYiTasks {
         dailyTasks.add(yunBeiTask);
         dailyTasks.add(listenToSongsTask);
         Collections.shuffle(dailyTasks);
+        dailyTasks.add(0, wangYiLoginCheckTask);
         start(dailyTasks);
     }
 
 
     public void start(List<Task> dailyTasks) {
-        WangYiConfig config = coreService.readWangYiConfig();
+        log.info("获取网易云音配置中........................");
+        WangYiConfig config = wangYiCoreService.readWangYiConfig();
 //        Assert.isTrue(config.isEnabled(),"未开启网易云音乐签到");
         if (config.isEnabled()) {
             try {
@@ -72,7 +76,7 @@ public class WangYiTasks {
                 e.printStackTrace();
             }
         } else {
-            log.info("....................未开启网易云音乐签到.......................");
+            log.info("网易云音乐 [未启用]");
         }
 
     }

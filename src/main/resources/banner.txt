@@ -6,6 +6,8 @@
  | |    | '_ \ / _ \/ __| |/ /______| | '_ \   / _` / __/ __| / __| __/ _` | '_ \| __|
  | |____| | | |  __/ (__|   <       | | | | | | (_| \__ \__ \ \__ \ || (_| | | | | |_
   \_____|_| |_|\___|\___|_|\_\      |_|_| |_|  \__,_|___/___/_|___/\__\__,_|_| |_|\__|
-
-                    author : ForkManTou
-                    version : v0.1  update : 2023-3-7 15:10:51
+                    第一次使用请修改 config 文件夹下的配置文件
+                    gitee : https://gitee.com/chamanto/sign-in-assistant
+                    github : https://github.com/CMTcode/sign-in-assistant
+                    author : @ForkManTou
+                    version : v0.2  update : 2023-3-24 14:25:29

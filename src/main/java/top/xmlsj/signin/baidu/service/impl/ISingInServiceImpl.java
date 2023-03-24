@@ -198,7 +198,7 @@ public class ISingInServiceImpl implements SingInService {
     @Override
     @Async("baiduasync")
     public void autoSingin() {
-        log.info(".....................获取百度贴吧配置........................");
+        log.info("获取百度贴吧配置中........................");
         BaiduConfig baiduConfig = YmlUtil.readConfig("./config/baidu.yml", BaiduConfig.class);
         if (baiduConfig.getEnabled()) {
             List<Account> accounts = baiduConfig.getAccounts();
@@ -209,7 +209,7 @@ public class ISingInServiceImpl implements SingInService {
                 asyncSingIn(account);
             }
         } else {
-            log.info("....................未启动贴吧签到.......................");
+            log.info("贴吧签到 [未启用]");
         }
     }
 }

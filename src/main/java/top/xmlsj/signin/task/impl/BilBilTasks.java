@@ -55,7 +55,7 @@ public class BilBilTasks {
 
     @Async("bilbilasync")
     public void run() {
-        log.info(".....................获取哔哩哔哩配置........................");
+        log.info("获取哔哩哔哩配置中........................");
         BilBilConfig bilBilConfig = YmlUtil.readConfig("./config/bilbil.yml", BilBilConfig.class);
         if (bilBilConfig.getEnabled()) {
             List<Account> accounts = bilBilConfig.getAccounts();
@@ -74,7 +74,7 @@ public class BilBilTasks {
                 start();
             }
         } else {
-            log.info("....................未启动哔哩哔哩签到.......................");
+            log.info("哔哩哔哩签到 [未启用] ");
         }
     }
 
@@ -91,6 +91,7 @@ public class BilBilTasks {
         dailyTasks.add(new GetVipPrivilege());
         Collections.shuffle(dailyTasks);
         dailyTasks.add(0, new UserCheck());
+        doDailyTask(dailyTasks);
     }
 
     public void doDailyTask(List<Task> dailyTasks) {

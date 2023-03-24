@@ -1,9 +1,10 @@
-# 是否开启
+# 是否开启 false 关闭  true 开启
 enabled: false
-# name任意填 ，bduss 贴吧首页cookie里的BDUSS项目
+# name任意填 ，网页F12获取哔哩哔哩cookie内的这三项 不会的百度
+#  支持多账号
 accounts:
   - name: 小鱼
-    DEDEUSERID: bbbbbbb
-    SESSDATA: bbbbbbb
-    BILI_JCT: bbbbbbb
+    DEDEUSERID: xxxx
+    SESSDATA: xxxx
+    BILI_JCT: xxxx
 

@@ -1,0 +1,11 @@
+spring:
+  main:
+    web-application-type: none
+  datasource:
+    driver-class-name: org.sqlite.JDBC
+    url: jdbc:sqlite::resource:data/data.db
+
+mybatis-plus:
+  mapperLocations: classpath*:mapper/**/*Mapper.xml
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
