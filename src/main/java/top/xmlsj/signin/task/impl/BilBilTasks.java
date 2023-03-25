@@ -84,7 +84,7 @@ public class BilBilTasks {
         dailyTasks.add(new VideoWatch());
         dailyTasks.add(new MangaSign());
         dailyTasks.add(new CoinAdd());
-        dailyTasks.add(new Silver2coin());
+//        dailyTasks.add(new Silver2coin());
         dailyTasks.add(new LiveCheckin());
         dailyTasks.add(new GiveGift());
         dailyTasks.add(new ChargeMe());

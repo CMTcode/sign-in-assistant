@@ -10,4 +10,4 @@
                     gitee : https://gitee.com/chamanto/sign-in-assistant
                     github : https://github.com/CMTcode/sign-in-assistant
                     author : @ForkManTou
-                    version : v0.2  update : 2023-3-24 14:25:29
+                    version : v0.3  update : 2023-3-25

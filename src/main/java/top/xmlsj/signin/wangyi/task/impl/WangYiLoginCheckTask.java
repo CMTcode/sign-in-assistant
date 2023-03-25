@@ -51,7 +51,6 @@ public class WangYiLoginCheckTask implements Task {
             if (code == 200) {
                 u.setLevel(jsonObject.getJSONObject("data").getInteger("level"));
                 u.setIsAuthenticated(1);
-                System.out.println(u);
                 userService.updateById(u);
             } else {
                 log.info("用户 {} 登录验证错误请检查cookie！！！" + u.getName());
