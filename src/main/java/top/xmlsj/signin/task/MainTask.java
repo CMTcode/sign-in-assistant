@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import top.xmlsj.signin.task.impl.AliYunTask;
 import top.xmlsj.signin.task.impl.BaiDuTask;
 import top.xmlsj.signin.task.impl.BilBilTasks;
 import top.xmlsj.signin.task.impl.WangYiTasks;
@@ -25,6 +26,8 @@ public class MainTask {
     private final BilBilTasks BilBilTasks;
     private final WangYiTasks wangYiTasks;
 
+    private final AliYunTask aliYunTask;
+
     /**
      * 运行一次所有项目
      */
@@ -32,6 +35,7 @@ public class MainTask {
         baiDuTask.run();
         BilBilTasks.run();
         wangYiTasks.run();
+        aliYunTask.run();
     }
 
     @Scheduled(cron = "1 1 0 * * ?")
@@ -53,5 +57,12 @@ public class MainTask {
     public void wangyiTimer() {
         log.info("开始网易每日定时任务");
         wangYiTasks.run();
+    }
+
+    @Scheduled(cron = "1 1 0 * * ?")
+    @Async("aliYunDeriveasync")
+    public void aliYunTimer() {
+        log.info("开始阿里云网盘每日定时任务");
+        aliYunTask.run();
     }
 }

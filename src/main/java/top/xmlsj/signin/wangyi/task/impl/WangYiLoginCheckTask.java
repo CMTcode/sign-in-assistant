@@ -44,7 +44,6 @@ public class WangYiLoginCheckTask implements Task {
         List<MusicUser> accounts = config.getAccounts();
         Assert.notNull(accounts, ExceptionConstants.ACCOUNTS_NULL);
         //入库
-        System.out.println(accounts);
         userService.saveBatch(accounts);
         accounts.forEach(u -> {
             JSONObject jsonObject = mapi.userLevel(u.getToken(), u.getCookie());

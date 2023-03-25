@@ -4,58 +4,48 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
+import top.xmlsj.signin.aliyundrive.domain.entity.AliYunDriveConfig;
+import top.xmlsj.signin.aliyundrive.task.AliYunDriveTask;
+import top.xmlsj.signin.aliyundrive.task.impl.AliYunDeriveSignTask;
+import top.xmlsj.signin.aliyundrive.task.impl.AliYunDriveCheckTask;
+import top.xmlsj.signin.aliyundrive.util.AliYunUtil;
 import top.xmlsj.signin.util.CoreUtil;
-import top.xmlsj.signin.wangyi.domain.entity.WangYiConfig;
-import top.xmlsj.signin.wangyi.service.WangYiCoreService;
-import top.xmlsj.signin.wangyi.task.Task;
-import top.xmlsj.signin.wangyi.task.impl.ListenToSongsTask;
-import top.xmlsj.signin.wangyi.task.impl.WangYiLoginCheckTask;
-import top.xmlsj.signin.wangyi.task.impl.YunBeiTask;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-
 /**
- * Created on 2023/3/16.
+ * Created on 2023/3/25.
  *
  * @author Yang YaoWei
  */
 @Component
 @Slf4j
 @RequiredArgsConstructor
-public class WangYiTasks {
+public class AliYunTask {
 
-    private final YunBeiTask yunBeiTask;
+    private final AliYunDeriveSignTask aliYunDeriveSignTask;
+    private final AliYunDriveCheckTask aliYunDriveCheckTask;
 
-    private final ListenToSongsTask listenToSongsTask;
-
-    private final WangYiCoreService wangYiCoreService;
-    private final WangYiLoginCheckTask wangYiLoginCheckTask;
-
-
-    @Async("wangyiasync")
+    @Async("aliYunDeriveasync")
     public void run() {
-        List<Task> dailyTasks;
+        List<AliYunDriveTask> dailyTasks;
         dailyTasks = new ArrayList<>();
-        dailyTasks.add(yunBeiTask);
-        dailyTasks.add(listenToSongsTask);
+        dailyTasks.add(aliYunDeriveSignTask);
         Collections.shuffle(dailyTasks);
-        dailyTasks.add(0, wangYiLoginCheckTask);
+        dailyTasks.add(0, aliYunDriveCheckTask);
         start(dailyTasks);
     }
 
-
-    public void start(List<Task> dailyTasks) {
-        log.info("获取网易云音配置中........................");
-        WangYiConfig config = wangYiCoreService.readWangYiConfig();
-//        Assert.isTrue(config.isEnabled(),"未开启网易云音乐签到");
+    public void start(List<AliYunDriveTask> dailyTasks) {
+        log.info("获取阿里云网盘配置中........................");
+        AliYunDriveConfig config = AliYunUtil.readAliYunDriveConfigConfig();
         if (config.isEnabled()) {
             try {
                 CoreUtil.printTime();
                 log.debug("任务启动中");
-                for (Task task : dailyTasks) {
+                for (AliYunDriveTask task : dailyTasks) {
                     log.info("------{}开始------", task.getName());
                     try {
                         task.run();
@@ -73,9 +63,8 @@ public class WangYiTasks {
                 e.printStackTrace();
             }
         } else {
-            log.info("网易云音乐 [未启用]");
+            log.info("阿里云网盘 [未启用]");
         }
 
     }
-
 }
