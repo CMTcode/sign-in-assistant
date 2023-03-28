@@ -8,7 +8,6 @@ import top.xmlsj.signin.aliyundrive.domain.entity.AliYunDriveConfig;
 import top.xmlsj.signin.aliyundrive.task.AliYunDriveTask;
 import top.xmlsj.signin.aliyundrive.task.impl.AliYunDeriveSignTask;
 import top.xmlsj.signin.aliyundrive.task.impl.AliYunDriveCheckTask;
-import top.xmlsj.signin.aliyundrive.util.AliYunUtil;
 import top.xmlsj.signin.util.CoreUtil;
 
 import java.util.ArrayList;
@@ -40,7 +39,7 @@ public class AliYunTask {
 
     public void start(List<AliYunDriveTask> dailyTasks) {
         log.info("获取阿里云网盘配置中........................");
-        AliYunDriveConfig config = AliYunUtil.readAliYunDriveConfigConfig();
+        AliYunDriveConfig config = CoreUtil.readAliYunDriveConfig();
         if (config.isEnabled()) {
             try {
                 CoreUtil.printTime();

@@ -4,12 +4,12 @@ import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+import top.xmlsj.signin.util.CoreUtil;
 import top.xmlsj.signin.util.ExceptionConstants;
 import top.xmlsj.signin.wangyi.api.MusicApiService;
 import top.xmlsj.signin.wangyi.domain.entity.MusicUser;
 import top.xmlsj.signin.wangyi.domain.entity.WangYiConfig;
 import top.xmlsj.signin.wangyi.service.MusicUserService;
-import top.xmlsj.signin.wangyi.service.WangYiCoreService;
 import top.xmlsj.signin.wangyi.task.Task;
 
 import javax.annotation.Resource;
@@ -25,8 +25,7 @@ import java.util.List;
 public class WangYiLoginCheckTask implements Task {
 
     private final String taskName = "登录检查";
-    @Resource
-    private WangYiCoreService wangYiCoreService;
+
     @Resource
     private MusicApiService mapi;
     @Resource
@@ -40,7 +39,7 @@ public class WangYiLoginCheckTask implements Task {
     public void run() {
         // 清空数据库表数据
         userService.truncateTable();
-        WangYiConfig config = wangYiCoreService.readWangYiConfig();
+        WangYiConfig config = CoreUtil.readWangYiConfig();
         List<MusicUser> accounts = config.getAccounts();
         Assert.notNull(accounts, ExceptionConstants.ACCOUNTS_NULL);
         //入库

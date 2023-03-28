@@ -1,6 +1,10 @@
 package top.xmlsj.signin.util;
 
 import lombok.extern.slf4j.Slf4j;
+import top.xmlsj.signin.aliyundrive.domain.entity.AliYunDriveConfig;
+import top.xmlsj.signin.baidu.domain.entity.BaiduConfig;
+import top.xmlsj.signin.constant.ConfigPathConstants;
+import top.xmlsj.signin.wangyi.domain.entity.WangYiConfig;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -25,5 +29,33 @@ public class CoreUtil {
         int sleepTime = (int) ((random.nextDouble() + 0.5) * 3000);
         log.info("-----随机暂停{}ms-----\n", sleepTime);
         Thread.sleep(sleepTime);
+    }
+
+
+    /**
+     * 读取网易云音乐配置文件
+     *
+     * @return 网易云音乐配置
+     */
+    public static WangYiConfig readWangYiConfig() {
+        return YmlUtil.readConfig(ConfigPathConstants.WANGYI_CONFIG_PATH, WangYiConfig.class);
+    }
+
+    /**
+     * 读取阿里云网盘配置文件
+     *
+     * @return
+     */
+    public static AliYunDriveConfig readAliYunDriveConfig() {
+        return YmlUtil.readConfig(ConfigPathConstants.ALIYUNDRIVE_CONFIG_PATH, AliYunDriveConfig.class);
+    }
+
+    /**
+     * 读取百度贴吧配置文件
+     *
+     * @return
+     */
+    public static BaiduConfig readBaiduConfig() {
+        return YmlUtil.readConfig(ConfigPathConstants.BAIDU_CONFIG_PATH, BaiduConfig.class);
     }
 }

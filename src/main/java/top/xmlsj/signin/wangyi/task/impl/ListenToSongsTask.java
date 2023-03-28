@@ -9,7 +9,6 @@ import top.xmlsj.signin.util.ExceptionConstants;
 import top.xmlsj.signin.wangyi.api.MusicApiService;
 import top.xmlsj.signin.wangyi.domain.entity.MusicUser;
 import top.xmlsj.signin.wangyi.service.MusicUserService;
-import top.xmlsj.signin.wangyi.service.WangYiCoreService;
 import top.xmlsj.signin.wangyi.task.Task;
 
 import javax.annotation.Resource;
@@ -30,8 +29,6 @@ public class ListenToSongsTask implements Task {
     private static final String NAME = "每日300首";
 
     private final MusicApiService mapi;
-    private final WangYiCoreService wangYiCoreService;
-
     @Resource
     private MusicUserService userService;
 

@@ -28,7 +28,7 @@ public class YmlUtil {
         try {
             inputStream = new FileInputStream(path);
         } catch (FileNotFoundException e) {
-            log.info("未找到 {} 配置文件", Arrays.stream(path.split("/")).reduce((f, s) -> s).orElse("Error"), e);
+            log.error("未找到 {} 配置文件", Arrays.stream(path.split("/")).reduce((f, s) -> s).orElse("Error"), e);
         }
         return new Yaml().loadAs(inputStream, type);
     }
@@ -45,7 +45,7 @@ public class YmlUtil {
         try {
             inputStream = new FileInputStream(path);
         } catch (FileNotFoundException e) {
-            log.info("未找到 {} 配置文件", Arrays.stream(path.split("/")).reduce((f, s) -> s).orElse("Error"), e);
+            log.error("未找到 {} 配置文件", Arrays.stream(path.split("/")).reduce((f, s) -> s).orElse("Error"), e);
         }
         return new Yaml().load(inputStream);
     }

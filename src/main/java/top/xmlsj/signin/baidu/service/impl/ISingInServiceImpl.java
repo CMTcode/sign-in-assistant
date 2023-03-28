@@ -17,7 +17,7 @@ import top.xmlsj.signin.baidu.domain.pojo.forums.Rows;
 import top.xmlsj.signin.baidu.service.SingInService;
 import top.xmlsj.signin.baidu.util.CookieUtil;
 import top.xmlsj.signin.baidu.util.TiebaSignUtil;
-import top.xmlsj.signin.util.YmlUtil;
+import top.xmlsj.signin.util.CoreUtil;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -199,7 +199,7 @@ public class ISingInServiceImpl implements SingInService {
     @Async("baiduasync")
     public void autoSingin() {
         log.info("获取百度贴吧配置中........................");
-        BaiduConfig baiduConfig = YmlUtil.readConfig("./config/baidu.yml", BaiduConfig.class);
+        BaiduConfig baiduConfig = CoreUtil.readBaiduConfig();
         if (baiduConfig.getEnabled()) {
             List<Account> accounts = baiduConfig.getAccounts();
             log.info("获取到{}个账号,开始签到", accounts.size());

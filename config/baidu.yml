@@ -1,3 +1,4 @@
+# 百度贴吧配置
 # 是否开启 false 关闭  true 开启
 enabled: false
 # name任意填 ，bduss 贴吧首页cookie里的BDUSS项目 不会的百度

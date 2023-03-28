@@ -18,7 +18,7 @@ public class Account {
     /**
      * 预留的硬币数，默认100
      */
-    private int reserveCoins = 100;
+    private int reserveCoins = 250;
 
     /**
      * 送礼 up 主的 uid，默认0为自己

@@ -6,7 +6,6 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import top.xmlsj.signin.util.CoreUtil;
 import top.xmlsj.signin.wangyi.domain.entity.WangYiConfig;
-import top.xmlsj.signin.wangyi.service.WangYiCoreService;
 import top.xmlsj.signin.wangyi.task.Task;
 import top.xmlsj.signin.wangyi.task.impl.ListenToSongsTask;
 import top.xmlsj.signin.wangyi.task.impl.WangYiLoginCheckTask;
@@ -31,7 +30,7 @@ public class WangYiTasks {
 
     private final ListenToSongsTask listenToSongsTask;
 
-    private final WangYiCoreService wangYiCoreService;
+
     private final WangYiLoginCheckTask wangYiLoginCheckTask;
 
 
@@ -49,7 +48,7 @@ public class WangYiTasks {
 
     public void start(List<Task> dailyTasks) {
         log.info("获取网易云音配置中........................");
-        WangYiConfig config = wangYiCoreService.readWangYiConfig();
+        WangYiConfig config = CoreUtil.readWangYiConfig();
 //        Assert.isTrue(config.isEnabled(),"未开启网易云音乐签到");
         if (config.isEnabled()) {
             try {

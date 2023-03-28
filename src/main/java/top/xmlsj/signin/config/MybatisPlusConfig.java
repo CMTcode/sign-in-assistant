@@ -29,8 +29,6 @@ public class MybatisPlusConfig {
         interceptor.addInnerInterceptor(paginationInnerInterceptor());
         // 乐观锁插件
         interceptor.addInnerInterceptor(optimisticLockerInnerInterceptor());
-        // 阻断插件
-
         return interceptor;
     }
 
@@ -40,7 +38,7 @@ public class MybatisPlusConfig {
     public PaginationInnerInterceptor paginationInnerInterceptor() {
         PaginationInnerInterceptor paginationInnerInterceptor = new PaginationInnerInterceptor();
         // 设置数据库类型为mysql
-        paginationInnerInterceptor.setDbType(DbType.MYSQL);
+        paginationInnerInterceptor.setDbType(DbType.SQLITE);
         // 设置最大单页限制数量，默认 500 条，-1 不受限制
         paginationInnerInterceptor.setMaxLimit(-1L);
         return paginationInnerInterceptor;

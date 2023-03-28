@@ -10,7 +10,7 @@ import top.xmlsj.signin.aliyundrive.domain.entity.AliYunDriveConfig;
 import top.xmlsj.signin.aliyundrive.domain.entity.AliYunDriveUser;
 import top.xmlsj.signin.aliyundrive.service.AliyundriveUserService;
 import top.xmlsj.signin.aliyundrive.task.AliYunDriveTask;
-import top.xmlsj.signin.aliyundrive.util.AliYunUtil;
+import top.xmlsj.signin.util.CoreUtil;
 import top.xmlsj.signin.util.ExceptionConstants;
 
 import javax.annotation.Resource;
@@ -39,7 +39,7 @@ public class AliYunDriveCheckTask implements AliYunDriveTask {
     public void run() {
         // 清空数据库表数据
         userService.truncateTable();
-        AliYunDriveConfig config = AliYunUtil.readAliYunDriveConfigConfig();
+        AliYunDriveConfig config = CoreUtil.readAliYunDriveConfig();
         List<AliYunDriveUser> accounts = config.getAccounts();
         Assert.notNull(accounts, ExceptionConstants.ACCOUNTS_NULL);
         //入库
