@@ -1,10 +1,11 @@
 package top.xmlsj.signin.util;
 
 import lombok.extern.slf4j.Slf4j;
-import top.xmlsj.signin.aliyundrive.domain.entity.AliYunDriveConfig;
-import top.xmlsj.signin.baidu.domain.entity.BaiduConfig;
-import top.xmlsj.signin.constant.ConfigPathConstants;
-import top.xmlsj.signin.wangyi.domain.entity.WangYiConfig;
+import top.xmlsj.signin.core.config.AppConfig;
+import top.xmlsj.signin.core.constant.ConfigPathConstants;
+import top.xmlsj.signin.model.aliyundrive.domain.entity.AliYunDriveConfig;
+import top.xmlsj.signin.model.baidu.domain.entity.BaiduConfig;
+import top.xmlsj.signin.model.wangyi.domain.entity.WangYiConfig;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -57,5 +58,9 @@ public class CoreUtil {
      */
     public static BaiduConfig readBaiduConfig() {
         return YmlUtil.readConfig(ConfigPathConstants.BAIDU_CONFIG_PATH, BaiduConfig.class);
+    }
+
+    public static AppConfig readAppConfig() {
+        return YmlUtil.readConfig(ConfigPathConstants.APP_CONFIG_PATH, AppConfig.class);
     }
 }

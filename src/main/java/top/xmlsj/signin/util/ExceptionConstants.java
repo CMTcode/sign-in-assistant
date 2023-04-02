@@ -8,4 +8,5 @@ package top.xmlsj.signin.util;
 public class ExceptionConstants {
 
     public static final String ACCOUNTS_NULL = "用户为空";
+    public static final String ACCOUNTS_AVAILABLE = "无有效用户";
 }

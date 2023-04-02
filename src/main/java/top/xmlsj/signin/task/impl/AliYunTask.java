@@ -4,10 +4,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
-import top.xmlsj.signin.aliyundrive.domain.entity.AliYunDriveConfig;
-import top.xmlsj.signin.aliyundrive.task.AliYunDriveTask;
-import top.xmlsj.signin.aliyundrive.task.impl.AliYunDeriveSignTask;
-import top.xmlsj.signin.aliyundrive.task.impl.AliYunDriveCheckTask;
+import top.xmlsj.signin.model.aliyundrive.domain.entity.AliYunDriveConfig;
+import top.xmlsj.signin.model.aliyundrive.task.AliYunDriveTask;
+import top.xmlsj.signin.model.aliyundrive.task.impl.AliYunDeriveSignTask;
+import top.xmlsj.signin.model.aliyundrive.task.impl.AliYunDriveCheckTask;
 import top.xmlsj.signin.util.CoreUtil;
 
 import java.util.ArrayList;
@@ -50,6 +50,7 @@ public class AliYunTask {
                         task.run();
                     } catch (Exception e) {
                         log.info("------{}--任务执行失败\n", task.getName());
+                        log.warn("任务 {}执行异常 : {}", task.getName(), e.getMessage());
                     }
                     log.info("------{}结束------\n", task.getName());
                     if ("登录检查".equals(task.getName()) && task.getState() == 1) {

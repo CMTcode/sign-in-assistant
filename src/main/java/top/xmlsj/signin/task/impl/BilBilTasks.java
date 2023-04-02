@@ -6,14 +6,14 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
-import top.xmlsj.signin.bilbil.apiquery.ApiList;
-import top.xmlsj.signin.bilbil.config.Config;
-import top.xmlsj.signin.bilbil.domain.entity.Account;
-import top.xmlsj.signin.bilbil.domain.entity.BilBilConfig;
-import top.xmlsj.signin.bilbil.domain.login.Verify;
-import top.xmlsj.signin.bilbil.task.Task;
-import top.xmlsj.signin.bilbil.task.impl.*;
-import top.xmlsj.signin.bilbil.utils.HttpUtil;
+import top.xmlsj.signin.model.bilbil.apiquery.ApiList;
+import top.xmlsj.signin.model.bilbil.config.Config;
+import top.xmlsj.signin.model.bilbil.domain.entity.Account;
+import top.xmlsj.signin.model.bilbil.domain.entity.BilBilConfig;
+import top.xmlsj.signin.model.bilbil.domain.login.Verify;
+import top.xmlsj.signin.model.bilbil.task.Task;
+import top.xmlsj.signin.model.bilbil.task.impl.*;
+import top.xmlsj.signin.model.bilbil.utils.HttpUtil;
 import top.xmlsj.signin.util.CoreUtil;
 import top.xmlsj.signin.util.YmlUtil;
 
@@ -21,8 +21,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static top.xmlsj.signin.bilbil.task.impl.TaskInfoHolder.STATUS_CODE_STR;
-import static top.xmlsj.signin.bilbil.task.impl.TaskInfoHolder.calculateUpgradeDays;
+import static top.xmlsj.signin.model.bilbil.task.impl.TaskInfoHolder.STATUS_CODE_STR;
+import static top.xmlsj.signin.model.bilbil.task.impl.TaskInfoHolder.calculateUpgradeDays;
 
 /**
  * Created on 2023/3/7.
@@ -104,6 +104,7 @@ public class BilBilTasks {
                     task.run();
                 } catch (Exception e) {
                     log.info("------{}--任务执行失败\n", task.getName());
+                    log.warn("任务 {}执行异常 : {}", task.getName(), e.getMessage());
                 }
                 log.info("------{}结束------\n", task.getName());
                 if ("登录检查".equals(task.getName()) && task.getState() == 1) {

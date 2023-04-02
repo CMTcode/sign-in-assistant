@@ -2,7 +2,7 @@ package top.xmlsj.signin.task.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import top.xmlsj.signin.baidu.service.SingInService;
+import top.xmlsj.signin.model.baidu.service.SingInService;
 import top.xmlsj.signin.task.SignInTask;
 
 /**
