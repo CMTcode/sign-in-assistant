@@ -1,37 +1,22 @@
-# 签到助手
+<div align="center">
+<h1 align="center">My-Actions</h1>
+<img src="https://img.shields.io/github/issues/CMTcode/sign-in-assistant?color=green">
+<img src="https://img.shields.io/github/stars/CMTcode/sign-in-assistant?color=yellow">
+<img src="https://img.shields.io/github/forks/CMTcode/sign-in-assistant?color=orange">
+<img src="https://img.shields.io/github/license/CMTcode/sign-in-assistant?color=ff69b4">
+<img src="https://img.shields.io/github/languages/code-size/CMTcode/sign-in-assistant?color=blueviolet">
+</div>
 
-#### 介绍
+整合各类应用签到，如百度贴吧签到、哔哩哔哩、网易云音乐、阿里云网盘等
 
-签到助手，整合各类应用签到，如百度贴吧签到、哔哩哔哩、网易云音乐等
+# 使用方式
 
-#### 软件架构
+待更新
 
-软件架构说明
+### 历史 Star 数
 
-#### 安装教程
+![](https://starchart.cc/CMTcode/sign-in-assistant.svg)
 
-1. xxxx
-2. xxxx
-3. xxxx
+### 访问量
 
-#### 使用说明
-
-1. xxxx
-2. xxxx
-3. xxxx
-
-#### 参与贡献
-
-1. Fork 本仓库
-2. 新建 Feat_xxx 分支
-3. 提交代码
-4. 新建 Pull Request
-
-#### 特技
-
-1. 使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2. Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3. 你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4. [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5. Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6. Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+![](http://profile-counter.glitch.me/CMTcode/count.svg)
