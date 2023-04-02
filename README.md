@@ -1,5 +1,5 @@
 <div align="center">
-<h1 align="center">My-Actions</h1>
+<h1 align="center">签到助手</h1>
 <img src="https://img.shields.io/github/issues/CMTcode/sign-in-assistant?color=green">
 <img src="https://img.shields.io/github/stars/CMTcode/sign-in-assistant?color=yellow">
 <img src="https://img.shields.io/github/forks/CMTcode/sign-in-assistant?color=orange">
