@@ -13,10 +13,12 @@
 
 待更新
 
+### 访问量
+
+![](http://profile-counter.glitch.me/CMTcode/count.svg)
+
 ### 历史 Star 数
 
 ![](https://starchart.cc/CMTcode/sign-in-assistant.svg)
 
-### 访问量
 
-![](http://profile-counter.glitch.me/CMTcode/count.svg)
