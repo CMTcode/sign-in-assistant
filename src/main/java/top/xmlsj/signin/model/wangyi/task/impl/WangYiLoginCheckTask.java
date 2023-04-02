@@ -50,9 +50,9 @@ public class WangYiLoginCheckTask implements Task {
         //入库
         userService.saveBatch(accounts);
         accounts.forEach(u -> {
-            log.info("user：{}", u.toString());
+            log.debug("user：{}", u.toString());
             JSONObject jsonObject = mapi.userLevel(u.getToken(), u.getCookie());
-            log.info(jsonObject.toString());
+            log.debug(jsonObject.toString());
             Integer code = jsonObject.getInteger("code");
             if (code == 200) {
                 u.setLevel(jsonObject.getJSONObject("data").getInteger("level"));
