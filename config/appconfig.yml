@@ -1,8 +1,9 @@
 msg:
   # 消息推送方式,只推送cooking登录检查失败用户,目前只支持邮件
-  # none 不开启  email 邮件通知
+  # none|不开启    email|邮件通知    server|server酱
   pushType: none
   pushConfig:
+    # 邮箱
     mailbox:
       host: smtp.qq.com
       port: 465
@@ -12,3 +13,6 @@ msg:
       password: xxxxxx
       # 邮件接收人
       email:
+    # server酱
+    server:
+      key:

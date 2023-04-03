@@ -2,7 +2,7 @@ package top.xmlsj.signin.model.message.service;
 
 import com.alibaba.fastjson2.JSONObject;
 import org.springframework.stereotype.Service;
-import top.xmlsj.signin.model.message.domain.entity.MessageInfo;
+import top.xmlsj.signin.model.message.domain.pojo.MsgInfo;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -21,7 +21,7 @@ public class MsgStrategyContext {
         this.strategyMap.putAll(strategyMap);
     }
 
-    public JSONObject send(MessageInfo messageInfo) {
-        return strategyMap.get(messageInfo.getMessageType()).send(messageInfo);
+    public JSONObject send(MsgInfo msgInfo) {
+        return strategyMap.get(msgInfo.getMessageType()).send(msgInfo);
     }
 }

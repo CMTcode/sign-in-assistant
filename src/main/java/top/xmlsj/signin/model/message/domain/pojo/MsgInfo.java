@@ -1,4 +1,4 @@
-package top.xmlsj.signin.model.message.domain.entity;
+package top.xmlsj.signin.model.message.domain.pojo;
 
 import lombok.Builder;
 import lombok.Data;
@@ -10,7 +10,7 @@ import lombok.Data;
  */
 @Data
 @Builder
-public class MessageInfo {
+public class MsgInfo {
 
     /**
      * 发送消息服务类型

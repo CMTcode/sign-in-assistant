@@ -1,7 +1,7 @@
 package top.xmlsj.signin.core.config;
 
 import lombok.Data;
-import top.xmlsj.signin.model.message.domain.pojo.MsgConfig;
+import top.xmlsj.signin.model.message.domain.pojo.config.MsgConfig;
 
 /**
  * Created on 2023/4/1.

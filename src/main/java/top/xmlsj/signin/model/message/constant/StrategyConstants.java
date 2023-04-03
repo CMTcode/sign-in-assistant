@@ -6,5 +6,5 @@ package top.xmlsj.signin.model.message.constant;
  * @author Yang YaoWei
  */
 public class StrategyConstants {
-    public static final String[] MSG_STRATEGY = {"none", "email"};
+    public static final String[] MSG_STRATEGY = {"none", "email", "server"};
 }

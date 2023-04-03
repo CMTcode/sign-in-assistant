@@ -4,8 +4,8 @@ import cn.hutool.extra.mail.MailAccount;
 import cn.hutool.extra.mail.MailUtil;
 import com.alibaba.fastjson2.JSONObject;
 import org.springframework.stereotype.Component;
-import top.xmlsj.signin.model.message.domain.entity.MessageInfo;
-import top.xmlsj.signin.model.message.domain.pojo.MailboxConfig;
+import top.xmlsj.signin.model.message.domain.pojo.MsgInfo;
+import top.xmlsj.signin.model.message.domain.pojo.config.MailboxConfig;
 import top.xmlsj.signin.model.message.service.MsgStrategyService;
 import top.xmlsj.signin.util.CoreUtil;
 
@@ -15,7 +15,7 @@ import top.xmlsj.signin.util.CoreUtil;
  * @author Yang YaoWei
  */
 @Component("email")
-public class MailboxMsgStrategyService implements MsgStrategyService {
+public class MailboxMsg implements MsgStrategyService {
     private static final MailboxConfig MAILBOX;
 
     static {
@@ -37,11 +37,11 @@ public class MailboxMsgStrategyService implements MsgStrategyService {
     /**
      * 消息发送
      *
-     * @param messageInfo
+     * @param msgInfo
      * @return
      */
     @Override
-    public JSONObject send(MessageInfo messageInfo) {
-        return JSONObject.parseObject(MailUtil.send(initAccount(), MAILBOX.getEmail(), messageInfo.getTitle(), messageInfo.getMessage(), false));
+    public JSONObject send(MsgInfo msgInfo) {
+        return JSONObject.parseObject(MailUtil.send(initAccount(), MAILBOX.getEmail(), msgInfo.getTitle(), msgInfo.getMessage(), false));
     }
 }

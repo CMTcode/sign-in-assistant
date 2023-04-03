@@ -1,4 +1,4 @@
-package top.xmlsj.signin.model.message.domain.pojo;
+package top.xmlsj.signin.model.message.domain.pojo.config;
 
 import lombok.Data;
 

@@ -37,9 +37,10 @@
 
 #### 消息推送
 
-​ 目前只推送cookie过期的账号
+ 目前只推送cookie失效的账号
 
 - 邮箱
+- Server酱 [Server酱官方](https://sct.ftqq.com/)
 
 ### 使用说明
 

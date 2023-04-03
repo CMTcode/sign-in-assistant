@@ -4,8 +4,8 @@ import com.alibaba.fastjson2.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import top.xmlsj.signin.model.message.constant.StrategyConstants;
-import top.xmlsj.signin.model.message.domain.entity.MessageInfo;
-import top.xmlsj.signin.model.message.domain.pojo.MsgConfig;
+import top.xmlsj.signin.model.message.domain.pojo.MsgInfo;
+import top.xmlsj.signin.model.message.domain.pojo.config.MsgConfig;
 import top.xmlsj.signin.util.CoreUtil;
 
 import java.util.Arrays;
@@ -26,21 +26,24 @@ public class SendService {
         MSG_CONFIG = CoreUtil.readAppConfig().getMsg();
     }
 
-    private final MsgStrategyService msgStrategyService;
+
+    private final MsgStrategyContext msgStrategyContext;
+
+    public SendService(MsgStrategyContext msgStrategyContext) {
+        this.msgStrategyContext = msgStrategyContext;
+    }
+
     private String title = "sigin签到助手";
 
-    public SendService(MsgStrategyService msgStrategyService) {
-        this.msgStrategyService = msgStrategyService;
-    }
 
     public void send(String msg) {
         if (Arrays.asList(StrategyConstants.MSG_STRATEGY).contains(MSG_CONFIG.getPushType())) {
             if (!"none".equals(MSG_CONFIG.getPushType())) {
-                MessageInfo info = MessageInfo.builder()
+                MsgInfo info = MsgInfo.builder()
                         .title(title)
                         .messageType(MSG_CONFIG.getPushType())
                         .message(msg).build();
-                JSONObject send = msgStrategyService.send(info);
+                JSONObject send = msgStrategyContext.send(info);
                 log.debug("{}", send);
             }
         } else {
