@@ -83,6 +83,7 @@ public class BilBilTasks {
         dailyTasks = new ArrayList<>();
         dailyTasks.add(new VideoWatch());
         dailyTasks.add(new MangaSign());
+        dailyTasks.add(new MangaRead());
         dailyTasks.add(new CoinAdd());
 //        dailyTasks.add(new Silver2coin());
         dailyTasks.add(new LiveCheckin());

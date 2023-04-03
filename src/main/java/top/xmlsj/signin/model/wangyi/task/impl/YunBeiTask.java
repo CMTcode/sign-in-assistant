@@ -26,7 +26,7 @@ import java.util.Map;
 @Service
 @Slf4j
 public class YunBeiTask implements Task {
-    private static final String NAME = "云贝";
+    private static final String NAME = "云贝签到";
 
     @Resource
     private MusicUserService userService;

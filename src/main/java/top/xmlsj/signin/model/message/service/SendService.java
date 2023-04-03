@@ -20,10 +20,10 @@ import java.util.Arrays;
 @Slf4j
 public class SendService {
 
-    private static final MsgConfig PUSHCONFIG;
+    private static final MsgConfig MSG_CONFIG;
 
     static {
-        PUSHCONFIG = CoreUtil.readAppConfig().getMsg();
+        MSG_CONFIG = CoreUtil.readAppConfig().getMsg();
     }
 
     private final MsgStrategyService msgStrategyService;
@@ -34,11 +34,11 @@ public class SendService {
     }
 
     public void send(String msg) {
-        if (Arrays.asList(StrategyConstants.MSG_STRATEGY).contains(PUSHCONFIG.getPushType())) {
-            if (!"none".equals(PUSHCONFIG.getPushType())) {
+        if (Arrays.asList(StrategyConstants.MSG_STRATEGY).contains(MSG_CONFIG.getPushType())) {
+            if (!"none".equals(MSG_CONFIG.getPushType())) {
                 MessageInfo info = MessageInfo.builder()
                         .title(title)
-                        .messageType(PUSHCONFIG.getPushType())
+                        .messageType(MSG_CONFIG.getPushType())
                         .message(msg).build();
                 JSONObject send = msgStrategyService.send(info);
                 log.debug("{}", send);

@@ -8,7 +8,7 @@ enabled: false
 # 充电对象的 uid，默认0为自己 chargeForLove
 #  支持多账号
 accounts:
-  - name: 小鱼
-    DEDEUSERID: xxxx
-    SESSDATA: xxxx
-    BILI_JCT: xxxx
+  - name: xxx
+    DEDEUSERID: xxx
+    SESSDATA: xxx
+    BILI_JCT: xxx
