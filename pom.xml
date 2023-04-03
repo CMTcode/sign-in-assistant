@@ -10,7 +10,7 @@
     </parent>
     <groupId>top.xmlsj</groupId>
     <artifactId>signin</artifactId>
-    <version>v0.3</version>
+    <version>v0.5</version>
     <name>signin</name>
     <description>signin</description>
     <properties>

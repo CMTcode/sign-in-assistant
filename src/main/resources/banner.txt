@@ -8,6 +8,6 @@
   \_____|_| |_|\___|\___|_|\_\      |_|_| |_|  \__,_|___/___/_|___/\__\__,_|_| |_|\__|
                     第一次使用请修改 config 文件夹下的配置文件
                     author : @ForkManTou
-                    version : v0.3  update : 2023-3-25
+                    version : v0.5  update : 2023-4-3
                     gitee : https://gitee.com/chamanto/sign-in-assistant
                     github : https://github.com/CMTcode/sign-in-assistant
