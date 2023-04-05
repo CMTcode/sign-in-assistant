@@ -21,6 +21,10 @@ public class MsgStrategyContext {
         this.strategyMap.putAll(strategyMap);
     }
 
+    public MsgStrategyService getResources(MsgInfo msgInfo) {
+        return strategyMap.get(msgInfo.getMessageType());
+    }
+
     public JSONObject send(MsgInfo msgInfo) {
         return strategyMap.get(msgInfo.getMessageType()).send(msgInfo);
     }

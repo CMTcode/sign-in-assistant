@@ -11,10 +11,10 @@ import top.xmlsj.signin.model.bilbil.config.Config;
 import top.xmlsj.signin.model.bilbil.domain.entity.Account;
 import top.xmlsj.signin.model.bilbil.domain.entity.BilBilConfig;
 import top.xmlsj.signin.model.bilbil.domain.login.Verify;
-import top.xmlsj.signin.model.bilbil.task.Task;
 import top.xmlsj.signin.model.bilbil.task.impl.*;
 import top.xmlsj.signin.model.bilbil.utils.HttpUtil;
-import top.xmlsj.signin.util.CoreUtil;
+import top.xmlsj.signin.task.SignInTaskExecution;
+import top.xmlsj.signin.task.SigninTask;
 import top.xmlsj.signin.util.YmlUtil;
 
 import java.util.ArrayList;
@@ -22,7 +22,6 @@ import java.util.Collections;
 import java.util.List;
 
 import static top.xmlsj.signin.model.bilbil.task.impl.TaskInfoHolder.STATUS_CODE_STR;
-import static top.xmlsj.signin.model.bilbil.task.impl.TaskInfoHolder.calculateUpgradeDays;
 
 /**
  * Created on 2023/3/7.
@@ -32,7 +31,7 @@ import static top.xmlsj.signin.model.bilbil.task.impl.TaskInfoHolder.calculateUp
 @Component
 @Slf4j
 @RequiredArgsConstructor
-public class BilBilTasks {
+public class BilBilTasks extends SignInTaskExecution {
 
 
     /**
@@ -54,7 +53,8 @@ public class BilBilTasks {
     }
 
     @Async("bilbilasync")
-    public void run() {
+    @Override
+    public void runTask() {
         log.info("获取哔哩哔哩配置中........................");
         BilBilConfig bilBilConfig = YmlUtil.readConfig("./config/bilbil.yml", BilBilConfig.class);
         if (bilBilConfig.getEnabled()) {
@@ -71,52 +71,24 @@ public class BilBilTasks {
                 //获取完整的浏览器 UA
                 Config.userAgent = account.getUserAgent();
 //                dailyTask.doDailyTask();
-                start();
+                List<SigninTask> dailyTasks;
+                dailyTasks = new ArrayList<>();
+                dailyTasks.add(new VideoWatch());
+                dailyTasks.add(new MangaSign());
+                dailyTasks.add(new MangaRead());
+                dailyTasks.add(new CoinAdd());
+//        dailyTasks.add(new Silver2coin());
+                dailyTasks.add(new LiveCheckin());
+                dailyTasks.add(new GiveGift());
+                dailyTasks.add(new ChargeMe());
+                dailyTasks.add(new GetVipPrivilege());
+                Collections.shuffle(dailyTasks);
+                dailyTasks.add(0, new UserCheck());
+                super.start(dailyTasks);
             }
         } else {
             log.info("哔哩哔哩签到 [未启用] ");
         }
     }
 
-    void start() {
-        List<Task> dailyTasks;
-        dailyTasks = new ArrayList<>();
-        dailyTasks.add(new VideoWatch());
-        dailyTasks.add(new MangaSign());
-        dailyTasks.add(new MangaRead());
-        dailyTasks.add(new CoinAdd());
-//        dailyTasks.add(new Silver2coin());
-        dailyTasks.add(new LiveCheckin());
-        dailyTasks.add(new GiveGift());
-        dailyTasks.add(new ChargeMe());
-        dailyTasks.add(new GetVipPrivilege());
-        Collections.shuffle(dailyTasks);
-        dailyTasks.add(0, new UserCheck());
-        doDailyTask(dailyTasks);
-    }
-
-    public void doDailyTask(List<Task> dailyTasks) {
-        try {
-            CoreUtil.printTime();
-            log.debug("任务启动中");
-            for (Task task : dailyTasks) {
-                log.info("------{}开始------", task.getName());
-                try {
-                    task.run();
-                } catch (Exception e) {
-                    log.info("------{}--任务执行失败\n", task.getName());
-                    log.warn("任务 {}执行异常 : {}", task.getName(), e.getMessage());
-                }
-                log.info("------{}结束------\n", task.getName());
-                if ("登录检查".equals(task.getName()) && task.getState() == 1) {
-                    break;
-                }
-                CoreUtil.taskSuspend();
-            }
-            log.info("本日任务已全部执行完毕");
-            calculateUpgradeDays();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 }

@@ -1,12 +1,11 @@
-package top.xmlsj.signin.model.aliyundrive.task;
+package top.xmlsj.signin.task;
 
 /**
  * Created on 2023/3/16.
- * 阿里云
  *
  * @author Yang YaoWei
  */
-public interface AliYunDriveTask {
+public interface SigninTask {
 
     /**
      * 任务实现

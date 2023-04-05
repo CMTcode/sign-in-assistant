@@ -38,6 +38,8 @@ public interface SingInService {
      */
     List<Forum> getForums(String bduss);
 
+    void asyncSingIn(Account account);
+
 
     /**
      * 签到线程

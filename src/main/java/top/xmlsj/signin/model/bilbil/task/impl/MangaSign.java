@@ -5,8 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import top.xmlsj.signin.model.bilbil.apiquery.ApiList;
 import top.xmlsj.signin.model.bilbil.config.Config;
-import top.xmlsj.signin.model.bilbil.task.Task;
 import top.xmlsj.signin.model.bilbil.utils.HttpUtil;
+import top.xmlsj.signin.task.SigninTask;
 
 
 /**
@@ -18,7 +18,7 @@ import top.xmlsj.signin.model.bilbil.utils.HttpUtil;
 
 @Slf4j
 @Service
-public class MangaSign implements Task {
+public class MangaSign implements SigninTask {
 
 
     private final String taskName = "漫画签到";

@@ -6,8 +6,8 @@ import top.xmlsj.signin.model.bilbil.apiquery.ApiList;
 import top.xmlsj.signin.model.bilbil.apiquery.oftenAPI;
 import top.xmlsj.signin.model.bilbil.config.Config;
 import top.xmlsj.signin.model.bilbil.domain.login.Verify;
-import top.xmlsj.signin.model.bilbil.task.Task;
 import top.xmlsj.signin.model.bilbil.utils.HttpUtil;
+import top.xmlsj.signin.task.SigninTask;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +21,7 @@ import java.util.Random;
  * @since 2020-11-22 5:28
  */
 @Slf4j
-public class CoinAdd implements Task {
+public class CoinAdd implements SigninTask {
 
     /**
      * 检查是否投币

@@ -3,8 +3,8 @@ package top.xmlsj.signin.model.bilbil.task.impl;
 import com.google.gson.JsonObject;
 import lombok.extern.slf4j.Slf4j;
 import top.xmlsj.signin.model.bilbil.apiquery.ApiList;
-import top.xmlsj.signin.model.bilbil.task.Task;
 import top.xmlsj.signin.model.bilbil.utils.HttpUtil;
+import top.xmlsj.signin.task.SigninTask;
 
 /**
  * 直播签到
@@ -13,7 +13,7 @@ import top.xmlsj.signin.model.bilbil.utils.HttpUtil;
  * @since 2020-11-22 5:42
  */
 @Slf4j
-public class LiveCheckin implements Task {
+public class LiveCheckin implements SigninTask {
 
 
     private final String taskName = "直播签到";

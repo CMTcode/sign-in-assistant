@@ -1,7 +1,7 @@
 package top.xmlsj.signin.model.wangyi.util;
 
 
-import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
+import cn.hutool.core.codec.Base64;
 import org.apache.commons.lang3.RandomStringUtils;
 
 import javax.crypto.Cipher;

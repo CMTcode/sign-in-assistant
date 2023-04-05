@@ -1,11 +1,10 @@
 package top.xmlsj.signin.model.wangyi.domain.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
 import java.util.Arrays;
+import java.util.Date;
 
 /**
  * Created on 2023/3/16.
@@ -21,10 +20,19 @@ public class MusicUser {
     private String name;
     private String token;
     private String cookie;
-
     private Integer level;
-
     private Integer isAuthenticated = 0;
+    /**
+     *
+     */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Date updateTime;
+
+    /**
+     *
+     */
+    @TableField(fill = FieldFill.INSERT)
+    private Date createTime;
 
     public void setCookie(String cookie) {
         this.cookie = cookie;

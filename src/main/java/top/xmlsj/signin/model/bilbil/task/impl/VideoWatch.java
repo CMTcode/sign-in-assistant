@@ -5,8 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import top.xmlsj.signin.model.bilbil.apiquery.ApiList;
 import top.xmlsj.signin.model.bilbil.apiquery.oftenAPI;
 import top.xmlsj.signin.model.bilbil.domain.login.Verify;
-import top.xmlsj.signin.model.bilbil.task.Task;
 import top.xmlsj.signin.model.bilbil.utils.HttpUtil;
+import top.xmlsj.signin.task.SigninTask;
 
 import java.util.Random;
 
@@ -19,7 +19,7 @@ import static top.xmlsj.signin.task.impl.BilBilTasks.getDailyTaskStatus;
  * @since 2020-11-22 5:13
  */
 @Slf4j
-public class VideoWatch implements Task {
+public class VideoWatch implements SigninTask {
 
     private final String taskName = "观看分享视频";
 

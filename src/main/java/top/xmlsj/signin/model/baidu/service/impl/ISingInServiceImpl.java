@@ -101,6 +101,7 @@ public class ISingInServiceImpl implements SingInService {
         }
     }
 
+    @Override
     public void asyncSingIn(Account account) {
         String tbstr = TiebaSignUtil.verification(account.getBduss());
         if (StringUtils.isBlank(tbstr)) {

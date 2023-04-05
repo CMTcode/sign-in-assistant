@@ -6,10 +6,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import top.xmlsj.signin.model.bilbil.apiquery.ApiList;
 import top.xmlsj.signin.model.bilbil.domain.pojo.userinfobean.Data;
-import top.xmlsj.signin.model.bilbil.task.Task;
 import top.xmlsj.signin.model.bilbil.utils.HelpUtil;
 import top.xmlsj.signin.model.bilbil.utils.HttpUtil;
 import top.xmlsj.signin.model.message.service.SendService;
+import top.xmlsj.signin.task.SigninTask;
 
 import javax.annotation.Resource;
 
@@ -24,7 +24,7 @@ import static top.xmlsj.signin.model.bilbil.task.impl.TaskInfoHolder.userInfo;
  */
 @Slf4j
 @Component
-public class UserCheck implements Task {
+public class UserCheck implements SigninTask {
 
     private final String taskName = "登录检查";
 
@@ -50,10 +50,10 @@ public class UserCheck implements Task {
                 log.info("Cookies有效，登录成功");
                 log.info("用户名称: {}", HelpUtil.userNameEncode(userInfo.getUname()));
                 log.info("硬币余额: " + userInfo.getMoney());
+                this.STATE = 1;
             } else {
                 log.debug(String.valueOf(userJson));
                 log.warn("Cookies可能失效了,请仔细检查DEDEUSERID SESSDATA BILI_JCT三项的值是否正确、过期");
-                this.STATE = 1;
 //                mailSend.send("哔哩哔哩异常", "Cookies可能失效了,请仔细检查Github Secrets中DEDEUSERID SESSDATA BILI_JCT三项的值是否正确、过期");
                 sendService.send("哔哩哔哩 : 用户 " + userInfo.getUname() + "Cookies可能失效了,请仔细检查Github Secrets中DEDEUSERID SESSDATA BILI_JCT三项的值是否正确、过期");
             }

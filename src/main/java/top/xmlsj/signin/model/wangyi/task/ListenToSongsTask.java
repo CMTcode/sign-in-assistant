@@ -1,4 +1,4 @@
-package top.xmlsj.signin.model.wangyi.task.impl;
+package top.xmlsj.signin.model.wangyi.task;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -9,7 +9,7 @@ import org.springframework.util.Assert;
 import top.xmlsj.signin.model.wangyi.api.MusicApiService;
 import top.xmlsj.signin.model.wangyi.domain.entity.MusicUser;
 import top.xmlsj.signin.model.wangyi.service.MusicUserService;
-import top.xmlsj.signin.model.wangyi.task.Task;
+import top.xmlsj.signin.task.SigninTask;
 import top.xmlsj.signin.util.ExceptionConstants;
 
 import javax.annotation.Resource;
@@ -25,7 +25,7 @@ import java.util.Set;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class ListenToSongsTask implements Task {
+public class ListenToSongsTask implements SigninTask {
 
     private static final String NAME = "每日300首";
 

@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.5</version>
+        <version>2.5.14</version>
         <relativePath/>
     </parent>
     <groupId>top.xmlsj</groupId>
@@ -19,11 +19,12 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!-- 三方包版本号   -->
         <unirest.vaersion>3.14.2</unirest.vaersion>
-        <fastjson.version>2.0.20</fastjson.version>
-        <hutool.version>5.8.12</hutool.version>
+        <fastjson.version>2.0.25</fastjson.version>
+        <hutool.version>5.8.15</hutool.version>
         <yumbo-music.version>1.2.3</yumbo-music.version>
-        <mybatis-plus.version>3.4.3.4</mybatis-plus.version>
+        <mybatis-plus.version>3.5.3.1</mybatis-plus.version>
         <javax.mail.version>1.6.2</javax.mail.version>
+        <jsoup.version>1.15.4</jsoup.version>
     </properties>
     <dependencies>
         <dependency>
@@ -55,10 +56,25 @@
             <groupId>top.yumbo.music</groupId>
             <artifactId>yumbo-music-utils</artifactId>
             <version>${yumbo-music.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>fastjson</artifactId>
+                    <groupId>com.alibaba</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>jsoup</artifactId>
+                    <groupId>org.jsoup</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>${jsoup.version}</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -93,6 +109,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
+                    <executable>true</executable>
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>
@@ -100,11 +117,6 @@
                         </exclude>
                     </excludes>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>com.spotify</groupId>
-                <artifactId>dockerfile-maven-plugin</artifactId>
-                <version>1.4.7</version>
             </plugin>
         </plugins>
     </build>

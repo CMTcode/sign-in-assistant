@@ -6,9 +6,9 @@ import top.xmlsj.signin.model.bilbil.apiquery.ApiList;
 import top.xmlsj.signin.model.bilbil.apiquery.oftenAPI;
 import top.xmlsj.signin.model.bilbil.config.Config;
 import top.xmlsj.signin.model.bilbil.domain.login.Verify;
-import top.xmlsj.signin.model.bilbil.task.Task;
 import top.xmlsj.signin.model.bilbil.utils.HelpUtil;
 import top.xmlsj.signin.model.bilbil.utils.HttpUtil;
+import top.xmlsj.signin.task.SigninTask;
 
 import java.util.Calendar;
 import java.util.TimeZone;
@@ -24,7 +24,7 @@ import static top.xmlsj.signin.model.bilbil.task.impl.TaskInfoHolder.*;
  * @since 2020-11-22 5:43
  */
 @Slf4j
-public class ChargeMe implements Task {
+public class ChargeMe implements SigninTask {
 
     private final String taskName = "大会员月底B币券充电和月初大会员权益领取";
 

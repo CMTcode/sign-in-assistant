@@ -4,8 +4,8 @@ import com.google.gson.JsonObject;
 import lombok.extern.slf4j.Slf4j;
 import top.xmlsj.signin.model.bilbil.apiquery.ApiList;
 import top.xmlsj.signin.model.bilbil.apiquery.oftenAPI;
-import top.xmlsj.signin.model.bilbil.task.Task;
 import top.xmlsj.signin.model.bilbil.utils.HttpUtil;
+import top.xmlsj.signin.task.SigninTask;
 
 /**
  * 银瓜子换硬币
@@ -14,7 +14,7 @@ import top.xmlsj.signin.model.bilbil.utils.HttpUtil;
  * @since 2020-11-22 5:25
  */
 @Slf4j
-public class Silver2coin implements Task {
+public class Silver2coin implements SigninTask {
 
     @Override
     public void run() {

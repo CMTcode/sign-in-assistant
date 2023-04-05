@@ -3,15 +3,15 @@ package top.xmlsj.signin.model.bilbil.task.impl;
 import com.google.gson.JsonObject;
 import lombok.extern.slf4j.Slf4j;
 import top.xmlsj.signin.model.bilbil.apiquery.ApiList;
-import top.xmlsj.signin.model.bilbil.task.Task;
 import top.xmlsj.signin.model.bilbil.utils.HttpUtil;
+import top.xmlsj.signin.task.SigninTask;
 
 /**
  * @author ForkManTou
  * @create 2021/1/13 17:50
  */
 @Slf4j
-public class MangaRead implements Task {
+public class MangaRead implements SigninTask {
 
     @Override
     public void run() {

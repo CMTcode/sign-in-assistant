@@ -1,4 +1,4 @@
-package top.xmlsj.signin.core.config;
+package top.xmlsj.signin.core.config.mybtais;
 
 /**
  * Created on 2022/11/4.
@@ -8,7 +8,6 @@ package top.xmlsj.signin.core.config;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
-import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
@@ -29,8 +28,8 @@ public class MybatisPlusConfig {
         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
         // 分页插件
         interceptor.addInnerInterceptor(paginationInnerInterceptor());
-        // 乐观锁插件
-        interceptor.addInnerInterceptor(optimisticLockerInnerInterceptor());
+//        // SQL规范插件
+//        interceptor.addInnerInterceptor(new IllegalSQLInnerInterceptor());
         return interceptor;
     }
 
@@ -46,12 +45,6 @@ public class MybatisPlusConfig {
         return paginationInnerInterceptor;
     }
 
-    /**
-     * 乐观锁插件 https://baomidou.com/guide/interceptor-optimistic-locker.html
-     */
-    public OptimisticLockerInnerInterceptor optimisticLockerInnerInterceptor() {
-        return new OptimisticLockerInnerInterceptor();
-    }
 
 
 }

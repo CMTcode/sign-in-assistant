@@ -19,50 +19,48 @@ import top.xmlsj.signin.task.impl.WangYiTasks;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class MainTask {
+public class SignInTimedTasks {
 
     private final BaiDuTask baiDuTask;
-
     private final BilBilTasks BilBilTasks;
     private final WangYiTasks wangYiTasks;
-
     private final AliYunTask aliYunTask;
 
     /**
      * 运行一次所有项目
      */
     public void start() {
-        baiDuTask.run();
-        BilBilTasks.run();
-        wangYiTasks.run();
-        aliYunTask.run();
+        baiDuTask.runTask();
+        BilBilTasks.runTask();
+        wangYiTasks.runTask();
+        aliYunTask.runTask();
     }
 
     @Scheduled(cron = "1 1 0 * * ?")
     @Async("bilbilasync")
     public void bilbilTimer() {
         log.info("开始哔哩哔哩每日定时任务");
-        BilBilTasks.run();
+        BilBilTasks.runTask();
     }
 
     @Scheduled(cron = "1 1 0 * * ?")
     @Async("baiduasync")
     public void baiduTimer() {
         log.info("开始百度贴吧每日定时任务");
-        baiDuTask.run();
+        baiDuTask.runTask();
     }
 
     @Scheduled(cron = "1 1 0 * * ?")
     @Async("wangyiasync")
     public void wangyiTimer() {
         log.info("开始网易每日定时任务");
-        wangYiTasks.run();
+        wangYiTasks.runTask();
     }
 
     @Scheduled(cron = "1 1 0 * * ?")
     @Async("aliYunDeriveasync")
     public void aliYunTimer() {
         log.info("开始阿里云网盘每日定时任务");
-        aliYunTask.run();
+        aliYunTask.runTask();
     }
 }

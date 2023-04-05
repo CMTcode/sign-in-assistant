@@ -1,4 +1,4 @@
-package top.xmlsj.signin.model.aliyundrive.task.impl;
+package top.xmlsj.signin.model.aliyundrive.task;
 
 import cn.hutool.http.HttpRequest;
 import com.alibaba.fastjson.JSON;
@@ -7,11 +7,12 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+import top.xmlsj.signin.model.aliyundrive.constant.AliYunConst;
 import top.xmlsj.signin.model.aliyundrive.domain.entity.AliYunDriveConfig;
 import top.xmlsj.signin.model.aliyundrive.domain.entity.AliYunDriveUser;
 import top.xmlsj.signin.model.aliyundrive.service.AliyundriveUserService;
-import top.xmlsj.signin.model.aliyundrive.task.AliYunDriveTask;
 import top.xmlsj.signin.model.message.service.SendService;
+import top.xmlsj.signin.task.SigninTask;
 import top.xmlsj.signin.util.CoreUtil;
 import top.xmlsj.signin.util.ExceptionConstants;
 
@@ -27,7 +28,7 @@ import java.util.List;
  */
 @Service
 @Slf4j
-public class AliYunDriveCheckTask implements AliYunDriveTask {
+public class AliYunDriveCheckTask implements SigninTask {
 
     private static final String NAME = "登录检查";
 
@@ -55,7 +56,8 @@ public class AliYunDriveCheckTask implements AliYunDriveTask {
             HashMap<String, Object> params = new HashMap<>();
             params.put("grant_type", "refresh_token");
             params.put("refresh_token", u.getRefreshToken());
-            String post = HttpRequest.post("https://auth.aliyundrive.com/v2/account/token").body(JSON.toJSONString(params))
+            String post = HttpRequest.post(AliYunConst.TOKEN_URL)
+                    .body(JSON.toJSONString(params))
                     .execute().body();
             JSONObject parseObject = JSONObject.parseObject(post);
             if (post.contains("access_token")) {
@@ -70,8 +72,8 @@ public class AliYunDriveCheckTask implements AliYunDriveTask {
             }
         });
         long auths = userService.count(new QueryWrapper<AliYunDriveUser>().eq("is_authenticated", 1));
-        if (auths < 1) {
-            // 如果无通过登录检测用户 服状态码为1 后面项目不执行
+        if (auths > 0) {
+            // 如果无通过登录检测用户 服状态码为0 后面项目不执行
             this.STATE = 1;
         }
     }

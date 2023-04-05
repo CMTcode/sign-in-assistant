@@ -1,4 +1,4 @@
-package top.xmlsj.signin.model.aliyundrive.task.impl;
+package top.xmlsj.signin.model.aliyundrive.task;
 
 import cn.hutool.http.Header;
 import cn.hutool.http.HttpRequest;
@@ -6,13 +6,14 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import top.xmlsj.signin.model.aliyundrive.constant.AliYunConst;
 import top.xmlsj.signin.model.aliyundrive.domain.entity.AliYunDriveUser;
 import top.xmlsj.signin.model.aliyundrive.domain.pojo.aliyunsigninfo.AliYunSignInfo;
 import top.xmlsj.signin.model.aliyundrive.domain.pojo.aliyunsigninfo.Reward;
 import top.xmlsj.signin.model.aliyundrive.domain.pojo.aliyunsigninfo.SignInLog;
 import top.xmlsj.signin.model.aliyundrive.domain.pojo.aliyunsigninfo.Status;
 import top.xmlsj.signin.model.aliyundrive.service.AliyundriveUserService;
-import top.xmlsj.signin.model.aliyundrive.task.AliYunDriveTask;
+import top.xmlsj.signin.task.SigninTask;
 
 import javax.annotation.Resource;
 import java.util.Collections;
@@ -27,7 +28,7 @@ import java.util.Objects;
  */
 @Slf4j
 @Service
-public class AliYunDeriveSignTask implements AliYunDriveTask {
+public class AliYunDeriveSignTask implements SigninTask {
 
     private static final String NAME = "每日签到";
 
@@ -46,7 +47,7 @@ public class AliYunDeriveSignTask implements AliYunDriveTask {
                 params.put("_rx-s", "mobile");
                 HashMap<String, Object> body = new HashMap<>();
                 body.put("isReward", true);
-                String result = HttpRequest.post("https://member.aliyundrive.com/v1/activity/sign_in_list")
+                String result = HttpRequest.post(AliYunConst.SIGNIN_IN_URL)
                         .header(Header.AUTHORIZATION, u.getToken())
                         .form(params)
                         .body(JSON.toJSONString(body)).execute().body();

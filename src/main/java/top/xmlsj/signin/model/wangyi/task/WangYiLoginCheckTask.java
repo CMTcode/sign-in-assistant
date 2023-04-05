@@ -1,4 +1,4 @@
-package top.xmlsj.signin.model.wangyi.task.impl;
+package top.xmlsj.signin.model.wangyi.task;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -10,7 +10,7 @@ import top.xmlsj.signin.model.wangyi.api.MusicApiService;
 import top.xmlsj.signin.model.wangyi.domain.entity.MusicUser;
 import top.xmlsj.signin.model.wangyi.domain.entity.WangYiConfig;
 import top.xmlsj.signin.model.wangyi.service.MusicUserService;
-import top.xmlsj.signin.model.wangyi.task.Task;
+import top.xmlsj.signin.task.SigninTask;
 import top.xmlsj.signin.util.CoreUtil;
 import top.xmlsj.signin.util.ExceptionConstants;
 
@@ -24,7 +24,7 @@ import java.util.List;
  */
 @Service
 @Slf4j
-public class WangYiLoginCheckTask implements Task {
+public class WangYiLoginCheckTask implements SigninTask {
 
     private final String taskName = "登录检查";
 
@@ -64,8 +64,9 @@ public class WangYiLoginCheckTask implements Task {
             }
         });
         long auths = userService.count(new QueryWrapper<MusicUser>().eq("is_authenticated", 1));
-        if (auths < 1) {
-            // 如果无通过登录检测用户 服状态码为1 后面项目不执行
+        System.out.println(auths);
+        if (auths > 0) {
+            // 如果无通过登录检测用户 状态码为0 后面项目不执行
             this.STATE = 1;
         }
     }

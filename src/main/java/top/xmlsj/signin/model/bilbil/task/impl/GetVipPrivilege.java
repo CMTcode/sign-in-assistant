@@ -6,8 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import top.xmlsj.signin.model.bilbil.apiquery.ApiList;
 import top.xmlsj.signin.model.bilbil.apiquery.oftenAPI;
 import top.xmlsj.signin.model.bilbil.task.ExtensionMethod;
-import top.xmlsj.signin.model.bilbil.task.Task;
 import top.xmlsj.signin.model.bilbil.utils.HttpUtil;
+import top.xmlsj.signin.task.SigninTask;
 
 import java.util.Calendar;
 import java.util.TimeZone;
@@ -23,7 +23,7 @@ import static top.xmlsj.signin.model.bilbil.task.impl.TaskInfoHolder.queryVipSta
  */
 @Slf4j
 @Data
-public class GetVipPrivilege implements Task {
+public class GetVipPrivilege implements SigninTask {
 
     /**
      * 权益号，由https://api.bilibili.com/x/vip/privilege/my

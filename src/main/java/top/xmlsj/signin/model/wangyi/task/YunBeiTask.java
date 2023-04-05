@@ -1,4 +1,4 @@
-package top.xmlsj.signin.model.wangyi.task.impl;
+package top.xmlsj.signin.model.wangyi.task;
 
 
 import com.alibaba.fastjson.JSONObject;
@@ -9,8 +9,8 @@ import org.springframework.util.Assert;
 import top.xmlsj.signin.model.wangyi.domain.entity.MusicUser;
 import top.xmlsj.signin.model.wangyi.domain.pojo.CloudBeiRes;
 import top.xmlsj.signin.model.wangyi.service.MusicUserService;
-import top.xmlsj.signin.model.wangyi.task.Task;
 import top.xmlsj.signin.model.wangyi.util.NetEasseColudApi;
+import top.xmlsj.signin.task.SigninTask;
 import top.xmlsj.signin.util.ExceptionConstants;
 
 import javax.annotation.Resource;
@@ -25,7 +25,7 @@ import java.util.Map;
  */
 @Service
 @Slf4j
-public class YunBeiTask implements Task {
+public class YunBeiTask implements SigninTask {
     private static final String NAME = "云贝签到";
 
     @Resource

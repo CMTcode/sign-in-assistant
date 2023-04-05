@@ -6,8 +6,8 @@ import com.google.gson.JsonObject;
 import lombok.extern.slf4j.Slf4j;
 import top.xmlsj.signin.model.bilbil.config.Config;
 import top.xmlsj.signin.model.bilbil.domain.login.Verify;
-import top.xmlsj.signin.model.bilbil.task.Task;
 import top.xmlsj.signin.model.bilbil.utils.HttpUtil;
+import top.xmlsj.signin.task.SigninTask;
 
 
 /**
@@ -18,7 +18,7 @@ import top.xmlsj.signin.model.bilbil.utils.HttpUtil;
  */
 
 @Slf4j
-public class GiveGift implements Task {
+public class GiveGift implements SigninTask {
 
     private final String taskName = "B站直播送出即将过期的礼物";
 
