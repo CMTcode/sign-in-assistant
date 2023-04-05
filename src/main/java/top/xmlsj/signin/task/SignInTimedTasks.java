@@ -36,28 +36,28 @@ public class SignInTimedTasks {
         aliYunTask.runTask();
     }
 
-    @Scheduled(cron = "1 1 0 * * ?")
+    @Scheduled(cron = "0 1 4 * * ?")
     @Async("bilbilasync")
     public void bilbilTimer() {
         log.info("开始哔哩哔哩每日定时任务");
         BilBilTasks.runTask();
     }
 
-    @Scheduled(cron = "1 1 0 * * ?")
+    @Scheduled(cron = "0 1 4 * * ?")
     @Async("baiduasync")
     public void baiduTimer() {
         log.info("开始百度贴吧每日定时任务");
         baiDuTask.runTask();
     }
 
-    @Scheduled(cron = "1 1 0 * * ?")
+    @Scheduled(cron = "0 1 4 * * ?")
     @Async("wangyiasync")
     public void wangyiTimer() {
         log.info("开始网易每日定时任务");
         wangYiTasks.runTask();
     }
 
-    @Scheduled(cron = "1 1 0 * * ?")
+    @Scheduled(cron = "0 1 4 * * ?")
     @Async("aliYunDeriveasync")
     public void aliYunTimer() {
         log.info("开始阿里云网盘每日定时任务");

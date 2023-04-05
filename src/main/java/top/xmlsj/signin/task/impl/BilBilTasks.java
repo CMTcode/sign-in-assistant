@@ -70,14 +70,12 @@ public class BilBilTasks extends SignInTaskExecution {
                 Config.upLive = String.valueOf(account.getUpLive());
                 //获取完整的浏览器 UA
                 Config.userAgent = account.getUserAgent();
-//                dailyTask.doDailyTask();
                 List<SigninTask> dailyTasks;
                 dailyTasks = new ArrayList<>();
                 dailyTasks.add(new VideoWatch());
                 dailyTasks.add(new MangaSign());
                 dailyTasks.add(new MangaRead());
                 dailyTasks.add(new CoinAdd());
-//        dailyTasks.add(new Silver2coin());
                 dailyTasks.add(new LiveCheckin());
                 dailyTasks.add(new GiveGift());
                 dailyTasks.add(new ChargeMe());
