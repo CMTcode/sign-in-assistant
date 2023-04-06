@@ -39,7 +39,7 @@ public class AliYunTask extends SignInTaskExecution {
         log.info("获取阿里云网盘配置中........................");
         AliYunDriveConfig config = CoreUtil.readAliYunDriveConfig();
         if (config.isEnabled()) {
-            start(dailyTasks);
+            execute(dailyTasks);
         } else {
             log.info("阿里云网盘 [未启用]");
         }

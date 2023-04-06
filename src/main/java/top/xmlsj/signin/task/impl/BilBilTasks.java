@@ -82,7 +82,7 @@ public class BilBilTasks extends SignInTaskExecution {
                 dailyTasks.add(new GetVipPrivilege());
                 Collections.shuffle(dailyTasks);
                 dailyTasks.add(0, new UserCheck());
-                super.start(dailyTasks);
+                super.execute(dailyTasks);
             }
         } else {
             log.info("哔哩哔哩签到 [未启用] ");

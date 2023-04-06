@@ -15,7 +15,7 @@ import java.util.List;
 @Slf4j
 public abstract class SignInTaskExecution {
 
-    protected final void start(List<SigninTask> tasks) {
+    protected final void execute(List<SigninTask> tasks) {
         try {
             CoreUtil.printTime();
             log.debug("任务启动中");

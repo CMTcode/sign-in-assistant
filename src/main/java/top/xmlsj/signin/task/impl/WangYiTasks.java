@@ -43,7 +43,7 @@ public class WangYiTasks extends SignInTaskExecution {
         log.info("获取网易云音配置中........................");
         WangYiConfig config = CoreUtil.readWangYiConfig();
         if (config.isEnabled()) {
-            super.start(dailyTasks);
+            super.execute(dailyTasks);
         } else {
             log.info("网易云音乐 [未启用]");
         }
