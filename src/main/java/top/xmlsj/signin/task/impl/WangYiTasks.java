@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
-import top.xmlsj.signin.model.wangyi.domain.entity.WangYiConfig;
+import top.xmlsj.signin.model.wangyi.domain.pojo.WangYiConfig;
 import top.xmlsj.signin.model.wangyi.task.ListenToSongsTask;
 import top.xmlsj.signin.model.wangyi.task.WangYiLoginCheckTask;
 import top.xmlsj.signin.model.wangyi.task.YunBeiTask;

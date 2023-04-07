@@ -8,7 +8,7 @@
 </div>
 该项目使用springboot作为框架整合各类应用签到，如百度贴吧签到、哔哩哔哩、网易云音乐、阿里云网盘等。
 
-该项目每日 00:01 开始每日签到任务，支持多账号。
+默认每日 04:01 开始每日签到任务,要修改请更改config/appconfig.yml内的scheduled.cron值
 
 ### 功能介绍
 
@@ -61,7 +61,7 @@
 
 - #### 各cookie获取说明
 
-  阿里云网盘refreshToken获取说明
+  - 阿里云网盘refreshToken获取说明
 
   ![](config/阿里云网盘refreshToken.png)
 

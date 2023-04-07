@@ -15,7 +15,7 @@ public class Application {
 
     public static void main(String[] args) {
         ApplicationContext applicationContext = SpringApplication.run(Application.class, args);
-        // 签到线程
+        // 运行一次签到线程
         applicationContext.getBean(SignInTimedTasks.class).start();
     }
 

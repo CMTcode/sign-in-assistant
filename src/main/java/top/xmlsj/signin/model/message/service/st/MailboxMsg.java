@@ -11,6 +11,7 @@ import top.xmlsj.signin.util.CoreUtil;
 
 /**
  * Created on 2023/4/1.
+ * 消息推送 邮箱
  *
  * @author Yang YaoWei
  */

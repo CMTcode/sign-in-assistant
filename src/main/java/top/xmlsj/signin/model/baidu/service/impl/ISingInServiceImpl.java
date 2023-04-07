@@ -11,7 +11,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import top.xmlsj.signin.model.baidu.domain.entity.Account;
-import top.xmlsj.signin.model.baidu.domain.entity.BaiduConfig;
+import top.xmlsj.signin.model.baidu.domain.pojo.BaiduConfig;
 import top.xmlsj.signin.model.baidu.domain.pojo.forums.Forum;
 import top.xmlsj.signin.model.baidu.domain.pojo.forums.Rows;
 import top.xmlsj.signin.model.baidu.service.SingInService;

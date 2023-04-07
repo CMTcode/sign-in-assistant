@@ -8,7 +8,7 @@ import org.springframework.util.Assert;
 import top.xmlsj.signin.model.message.service.SendService;
 import top.xmlsj.signin.model.wangyi.api.MusicApiService;
 import top.xmlsj.signin.model.wangyi.domain.entity.MusicUser;
-import top.xmlsj.signin.model.wangyi.domain.entity.WangYiConfig;
+import top.xmlsj.signin.model.wangyi.domain.pojo.WangYiConfig;
 import top.xmlsj.signin.model.wangyi.service.MusicUserService;
 import top.xmlsj.signin.task.SigninTask;
 import top.xmlsj.signin.util.CoreUtil;

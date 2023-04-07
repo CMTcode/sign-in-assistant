@@ -1,11 +1,11 @@
 package top.xmlsj.signin.util;
 
 import lombok.extern.slf4j.Slf4j;
-import top.xmlsj.signin.core.config.AppConfig;
+import top.xmlsj.signin.core.config.app.AppConfig;
 import top.xmlsj.signin.core.constant.ConfigPathConstants;
 import top.xmlsj.signin.model.aliyundrive.domain.entity.AliYunDriveConfig;
-import top.xmlsj.signin.model.baidu.domain.entity.BaiduConfig;
-import top.xmlsj.signin.model.wangyi.domain.entity.WangYiConfig;
+import top.xmlsj.signin.model.baidu.domain.pojo.BaiduConfig;
+import top.xmlsj.signin.model.wangyi.domain.pojo.WangYiConfig;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,6 +13,7 @@ import java.util.Random;
 
 /**
  * Created on 2023/3/19.
+ * 核心工具类
  *
  * @author Yang YaoWei
  */

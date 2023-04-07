@@ -1,6 +1,7 @@
-package top.xmlsj.signin.model.baidu.domain.entity;
+package top.xmlsj.signin.model.baidu.domain.pojo;
 
 import lombok.Data;
+import top.xmlsj.signin.model.baidu.domain.entity.Account;
 
 import java.util.List;
 

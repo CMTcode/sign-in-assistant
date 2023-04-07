@@ -1,6 +1,7 @@
-package top.xmlsj.signin.model.wangyi.domain.entity;
+package top.xmlsj.signin.model.wangyi.domain.pojo;
 
 import lombok.Data;
+import top.xmlsj.signin.model.wangyi.domain.entity.MusicUser;
 
 import java.util.List;
 

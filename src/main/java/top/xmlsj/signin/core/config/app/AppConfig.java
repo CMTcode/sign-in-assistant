@@ -1,4 +1,4 @@
-package top.xmlsj.signin.core.config;
+package top.xmlsj.signin.core.config.app;
 
 import lombok.Data;
 import top.xmlsj.signin.model.message.domain.pojo.config.MsgConfig;
@@ -11,4 +11,5 @@ import top.xmlsj.signin.model.message.domain.pojo.config.MsgConfig;
 @Data
 public class AppConfig {
     private MsgConfig msg;
+    private ScheduledConfig scheduled;
 }

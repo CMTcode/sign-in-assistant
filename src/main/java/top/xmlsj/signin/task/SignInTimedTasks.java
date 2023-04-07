@@ -1,66 +1,42 @@
 package top.xmlsj.signin.task;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.scheduling.annotation.Async;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import top.xmlsj.signin.task.impl.AliYunTask;
-import top.xmlsj.signin.task.impl.BaiDuTask;
-import top.xmlsj.signin.task.impl.BilBilTasks;
-import top.xmlsj.signin.task.impl.WangYiTasks;
+import top.xmlsj.signin.core.config.YmlPropertySourceFactory;
+
+import javax.annotation.Resource;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created on 2023/3/7.
+ * 任务执行主线
  *
  * @author Yang YaoWei
  */
 
 @Slf4j
 @Component
-@RequiredArgsConstructor
+@PropertySource(value = "file:config/appconfig.yml",
+        factory = YmlPropertySourceFactory.class)
 public class SignInTimedTasks {
 
-    private final BaiDuTask baiDuTask;
-    private final BilBilTasks BilBilTasks;
-    private final WangYiTasks wangYiTasks;
-    private final AliYunTask aliYunTask;
+    @Resource
+    private final Map<String, SignInTaskExecution> signTasks = new ConcurrentHashMap<>();
 
     /**
      * 运行一次所有项目
      */
     public void start() {
-        baiDuTask.runTask();
-        BilBilTasks.runTask();
-        wangYiTasks.runTask();
-        aliYunTask.runTask();
+        signTasks.forEach((k, v) -> v.runTask());
     }
 
-    @Scheduled(cron = "0 1 4 * * ?")
-    @Async("bilbilasync")
+    @Scheduled(cron = "${scheduled.cron}")
     public void bilbilTimer() {
-        log.info("开始哔哩哔哩每日定时任务");
-        BilBilTasks.runTask();
+        log.info("开始执行每日定时任务");
+        start();
     }
 
-    @Scheduled(cron = "0 1 4 * * ?")
-    @Async("baiduasync")
-    public void baiduTimer() {
-        log.info("开始百度贴吧每日定时任务");
-        baiDuTask.runTask();
-    }
-
-    @Scheduled(cron = "0 1 4 * * ?")
-    @Async("wangyiasync")
-    public void wangyiTimer() {
-        log.info("开始网易每日定时任务");
-        wangYiTasks.runTask();
-    }
-
-    @Scheduled(cron = "0 1 4 * * ?")
-    @Async("aliYunDeriveasync")
-    public void aliYunTimer() {
-        log.info("开始阿里云网盘每日定时任务");
-        aliYunTask.runTask();
-    }
 }
