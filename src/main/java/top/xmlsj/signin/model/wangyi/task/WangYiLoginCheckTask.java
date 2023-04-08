@@ -64,7 +64,6 @@ public class WangYiLoginCheckTask implements SigninTask {
             }
         });
         long auths = userService.count(new QueryWrapper<MusicUser>().eq("is_authenticated", 1));
-        System.out.println(auths);
         if (auths > 0) {
             // 如果无通过登录检测用户 状态码为0 后面项目不执行
             this.STATE = 1;

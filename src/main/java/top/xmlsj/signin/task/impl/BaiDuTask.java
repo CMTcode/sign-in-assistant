@@ -4,12 +4,15 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
-import top.xmlsj.signin.model.baidu.domain.entity.Account;
 import top.xmlsj.signin.model.baidu.domain.pojo.BaiduConfig;
-import top.xmlsj.signin.model.baidu.service.SingInService;
+import top.xmlsj.signin.model.baidu.task.BaiduLoginVerifyTask;
+import top.xmlsj.signin.model.baidu.task.BaiduSignInTask;
 import top.xmlsj.signin.task.SignInTaskExecution;
+import top.xmlsj.signin.task.SigninTask;
 import top.xmlsj.signin.util.CoreUtil;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -22,22 +25,21 @@ import java.util.List;
 @Slf4j
 public class BaiDuTask extends SignInTaskExecution {
 
-    private final SingInService baiduService;
+    private final BaiduLoginVerifyTask loginVerifyTask;
+    private final BaiduSignInTask signInTask;
 
 
     @Override
     @Async("baiduasync")
     public void runTask() {
+        List<SigninTask> dailyTasks = new ArrayList<>();
+        dailyTasks.add(signInTask);
+        Collections.shuffle(dailyTasks);
+        dailyTasks.add(0, loginVerifyTask);
         log.info("获取百度贴吧配置中........................");
         BaiduConfig baiduConfig = CoreUtil.readBaiduConfig();
-        if (baiduConfig.getEnabled()) {
-            List<Account> accounts = baiduConfig.getAccounts();
-            log.info("获取到{}个账号,开始签到", accounts.size());
-            for (int i = 0; i < accounts.size(); i++) {
-                Account account = accounts.get(i);
-                log.info("签到第 {} 个账号 : {}", i + 1, account.getName());
-                baiduService.asyncSingIn(account);
-            }
+        if (baiduConfig.isEnabled()) {
+            execute(dailyTasks);
         } else {
             log.info("贴吧签到 [未启用]");
         }
