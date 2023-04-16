@@ -100,9 +100,9 @@
         <!--            <url>https://repo.spring.io/release</url>-->
         <!--        </repository>-->
         <repository>
-            <id>spring</id>
+            <id>public</id>
             <name>aliyun</name>
-            <url>https://maven.aliyun.com/repository/spring</url>
+            <url>https://maven.aliyun.com/repository/public</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
