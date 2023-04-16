@@ -4,6 +4,7 @@ import cn.hutool.http.Header;
 import cn.hutool.http.HttpRequest;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import top.xmlsj.signin.model.aliyundrive.constant.AliYunConst;
@@ -15,7 +16,6 @@ import top.xmlsj.signin.model.aliyundrive.domain.pojo.aliyunsigninfo.Status;
 import top.xmlsj.signin.model.aliyundrive.service.AliyundriveUserService;
 import top.xmlsj.signin.task.SigninTask;
 
-import javax.annotation.Resource;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;

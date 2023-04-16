@@ -2,6 +2,7 @@ package top.xmlsj.signin.model.wangyi.task;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import jakarta.annotation.Resource;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,6 @@ import top.xmlsj.signin.model.wangyi.service.MusicUserService;
 import top.xmlsj.signin.task.SigninTask;
 import top.xmlsj.signin.util.ExceptionConstants;
 
-import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -68,7 +68,7 @@ public class ListenToSongsTask implements SigninTask {
         if (user.getLevel() < 10) {
             //因为每天上限是300首，但是要歌曲不重复，如果需要不重复的300首之后停止，请轮询用户等级信息接口获取听歌量后自行判断，successCount此处只能作为记录请求次数，无法确定是否成功刷歌
             int successCount = 0;
-            int nowPlayCount = Integer.parseInt(mapi.userLevel(user.getToken(), user.getCookie()).getJSONObject("data").getString("nowPlayCount"));
+            int nowPlayCount = Integer.parseInt(mapi.userLevel(user.getCookie()).getJSONObject("data").getString("nowPlayCount"));
             int upperLimit = nowPlayCount + 300;
             log.info("每日听歌打卡=========================");
             //判断是否需要重试
@@ -80,23 +80,23 @@ public class ListenToSongsTask implements SigninTask {
 //            throw new RuntimeException("请设置好代理后再使用~~~");
 //        }
             //获取每日推荐歌单，保证是不影响听歌口味
-            JSONObject resourceJSON = mapi.getRecommentSongs(user.getToken(), user.getCookie());
+            JSONObject resourceJSON = mapi.getRecommendedPlay(user.getCookie());
             //解析歌单，返回一个map，key是歌单id,value是歌单中歌曲id的集合
-            Map<Long, List<Long>> playListMap = mapi.parsePlayList(resourceJSON, user.getToken(), user.getCookie());
+            Map<Long, List<Long>> playListMap = mapi.parsePlayList(resourceJSON, user.getCookie());
             Set<Long> playListKeySet = playListMap.keySet();
             a:
             for (Long sourceId : playListKeySet) {
                 List<Long> songIdList = playListMap.get(sourceId);
                 for (Long songId : songIdList) {
                     try {
-                        JSONObject listenResult = mapi.listenSong(user.getToken(), user.getCookie(), songId + "", sourceId + "");
+                        JSONObject listenResult = mapi.listenSong(user.getCookie(), songId + "", sourceId + "");
                         if (listenResult != null && listenResult.getInteger("code") == 200) {
                             successCount++;
                             log.info(user.getName() + ": 第" + successCount + "首 : " + sourceId + "===>>歌曲ID : " + songId + "目标 ：" + upperLimit);
                             Thread.sleep(500);
                             //每100首检测一次
                             if (successCount >= 300 && successCount % 50 == 0) {
-                                int t = Integer.parseInt(mapi.userLevel(user.getToken(), user.getCookie()).getJSONObject("data").getString("nowPlayCount"));
+                                int t = Integer.parseInt(mapi.userLevel(user.getCookie()).getJSONObject("data").getString("nowPlayCount"));
                                 if (t == upperLimit | successCount > 2000) {
                                     log.info("已完成每日300首听歌当前等级听歌量为：{}", t);
                                     break a;

@@ -4,6 +4,7 @@ import cn.hutool.http.HttpRequest;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -16,7 +17,6 @@ import top.xmlsj.signin.task.SigninTask;
 import top.xmlsj.signin.util.CoreUtil;
 import top.xmlsj.signin.util.ExceptionConstants;
 
-import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
 

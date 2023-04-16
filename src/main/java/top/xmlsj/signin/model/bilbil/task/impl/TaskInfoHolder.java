@@ -3,7 +3,7 @@ package top.xmlsj.signin.model.bilbil.task.impl;
 import com.google.gson.JsonObject;
 import lombok.extern.slf4j.Slf4j;
 import top.xmlsj.signin.model.bilbil.apiquery.ApiList;
-import top.xmlsj.signin.model.bilbil.domain.pojo.userinfobean.Data;
+import top.xmlsj.signin.model.bilbil.domain.pojo.userinfobean.BilBilUserInfo;
 import top.xmlsj.signin.model.bilbil.utils.HttpUtil;
 
 
@@ -17,7 +17,7 @@ import top.xmlsj.signin.model.bilbil.utils.HttpUtil;
 public class TaskInfoHolder {
 
     public static final String STATUS_CODE_STR = "code";
-    public static Data userInfo = null;
+    public static BilBilUserInfo userInfo = null;
     public static GetVideoId getVideoId = new GetVideoId();
 
     public static void calculateUpgradeDays() {

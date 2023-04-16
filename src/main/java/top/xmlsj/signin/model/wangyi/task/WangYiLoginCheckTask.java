@@ -2,6 +2,7 @@ package top.xmlsj.signin.model.wangyi.task;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -14,7 +15,6 @@ import top.xmlsj.signin.task.SigninTask;
 import top.xmlsj.signin.util.CoreUtil;
 import top.xmlsj.signin.util.ExceptionConstants;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -51,7 +51,7 @@ public class WangYiLoginCheckTask implements SigninTask {
         userService.saveBatch(accounts);
         accounts.forEach(u -> {
             log.debug("user：{}", u.toString());
-            JSONObject jsonObject = mapi.userLevel(u.getToken(), u.getCookie());
+            JSONObject jsonObject = mapi.userLevel(u.getCookie());
             log.debug(jsonObject.toString());
             Integer code = jsonObject.getInteger("code");
             if (code == 200) {

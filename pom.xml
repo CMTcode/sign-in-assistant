@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.5.14</version>
+        <version>3.0.5</version>
         <relativePath/>
     </parent>
     <groupId>top.xmlsj</groupId>
@@ -14,7 +14,7 @@
     <name>signin</name>
     <description>signin</description>
     <properties>
-        <java.version>8</java.version>
+        <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!-- 三方包版本号   -->
@@ -55,21 +55,6 @@
             <groupId>com.konghq</groupId>
             <artifactId>unirest-java</artifactId>
             <version>${unirest.vaersion}</version>
-        </dependency>
-        <dependency>
-            <groupId>top.yumbo.music</groupId>
-            <artifactId>yumbo-music-utils</artifactId>
-            <version>${yumbo-music.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>fastjson</artifactId>
-                    <groupId>com.alibaba</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>jsoup</artifactId>
-                    <groupId>org.jsoup</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>

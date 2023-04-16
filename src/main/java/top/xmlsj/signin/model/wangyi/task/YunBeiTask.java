@@ -3,6 +3,7 @@ package top.xmlsj.signin.model.wangyi.task;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -13,7 +14,6 @@ import top.xmlsj.signin.model.wangyi.util.NetEasseColudApi;
 import top.xmlsj.signin.task.SigninTask;
 import top.xmlsj.signin.util.ExceptionConstants;
 
-import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
