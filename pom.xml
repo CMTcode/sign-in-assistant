@@ -92,6 +92,34 @@
         </dependency>
     </dependencies>
 
+    <repositories>
+        <!--依赖源-->
+        <!--        <repository>-->
+        <!--            <id>spring-release</id>-->
+        <!--            <name>Spring release</name>-->
+        <!--            <url>https://repo.spring.io/release</url>-->
+        <!--        </repository>-->
+        <repository>
+            <id>spring</id>
+            <name>aliyun</name>
+            <url>https://maven.aliyun.com/repository/spring</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <!--插件源-->
+        <pluginRepository>
+            <id>spring-release</id>
+            <name>Spring release</name>
+            <url>https://repo.spring.io/release</url>
+        </pluginRepository>
+    </pluginRepositories>
+
     <build>
         <plugins>
             <plugin>
