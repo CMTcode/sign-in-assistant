@@ -10,7 +10,7 @@
     </parent>
     <groupId>top.xmlsj</groupId>
     <artifactId>signin</artifactId>
-    <version>v0.7</version>
+    <version>v0.6</version>
     <name>signin</name>
     <description>signin</description>
     <properties>
@@ -90,7 +90,6 @@
             <artifactId>javax.mail</artifactId>
             <version>${javax.mail.version}</version>
         </dependency>
-
     </dependencies>
 
     <repositories>
@@ -101,9 +100,9 @@
         <!--            <url>https://repo.spring.io/release</url>-->
         <!--        </repository>-->
         <repository>
-            <id>public</id>
+            <id>spring</id>
             <name>aliyun</name>
-            <url>https://maven.aliyun.com/repository/public</url>
+            <url>https://maven.aliyun.com/repository/spring</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
