@@ -1,5 +1,6 @@
 package top.xmlsj.signin.model.wangyi.api;
 
+import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ import java.util.stream.Collectors;
  * @author Yang YaoWei
  */
 @Service
-public class MusicApiService {
+public class MusicApi {
     /**
      * 获取每日推荐歌单
      *
@@ -91,6 +92,13 @@ public class MusicApiService {
     }
 
 
+    /**
+     * 获取用户
+     *
+     * @param token
+     * @param cookie
+     * @return
+     */
     public JSONObject userLevel(String token, String cookie) {
         String url = "https://music.163.com/weapi/user/level?csrf_token=" + token;
         Map headers = new HashMap<>();
@@ -101,6 +109,24 @@ public class MusicApiService {
         param.put("withCredentials", true);
         JSONObject info = NetEasseColudApi.api(param.toJSONString(), url, headers);
         return info;
+    }
+
+    /**
+     * 签到
+     * 0为安卓端签到 3点经验, 1为网页签到,2点经验
+     *
+     * @param cookie
+     * @return
+     */
+    public JSONObject dailySignin(String cookie, int type) {
+        String url = "https://music.163.com/weapi/point/dailyTask";
+        Map headers = new HashMap<>();
+        headers.put("crypto", "weapi");
+        headers.put("Cookie", cookie);
+        JSONObject param = new JSONObject();
+        param.put("withCredentials", true);
+        param.put("type", StrUtil.nullToDefault(Integer.toString(type), "0"));
+        return NetEasseColudApi.api(param.toJSONString(), url, headers);
     }
 
     /**

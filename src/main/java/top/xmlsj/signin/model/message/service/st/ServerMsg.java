@@ -5,9 +5,9 @@ import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import top.xmlsj.signin.core.util.ConfigUtil;
 import top.xmlsj.signin.model.message.domain.pojo.MsgInfo;
 import top.xmlsj.signin.model.message.service.MsgStrategyService;
-import top.xmlsj.signin.util.CoreUtil;
 
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
@@ -25,7 +25,7 @@ public class ServerMsg implements MsgStrategyService {
     private final static String KEY;
 
     static {
-        KEY = CoreUtil.readAppConfig().getMsg().getPushConfig().getServer().getKey();
+        KEY = ConfigUtil.readAppConfig().getMsg().getPushConfig().getServer().getKey();
     }
 
     /**

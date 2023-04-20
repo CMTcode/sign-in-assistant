@@ -4,12 +4,12 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
+import top.xmlsj.signin.core.util.ConfigUtil;
 import top.xmlsj.signin.model.aliyundrive.domain.entity.AliYunDriveConfig;
 import top.xmlsj.signin.model.aliyundrive.task.AliYunDeriveSignTask;
 import top.xmlsj.signin.model.aliyundrive.task.AliYunDriveCheckTask;
 import top.xmlsj.signin.task.SignInTaskExecution;
 import top.xmlsj.signin.task.SigninTask;
-import top.xmlsj.signin.util.CoreUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -37,7 +37,7 @@ public class AliYunTask extends SignInTaskExecution {
         Collections.shuffle(dailyTasks);
         dailyTasks.add(0, aliYunDriveCheckTask);
         log.info("获取阿里云网盘配置中........................");
-        AliYunDriveConfig config = CoreUtil.readAliYunDriveConfig();
+        AliYunDriveConfig config = ConfigUtil.readAliYunDriveConfig();
         if (config.isEnabled()) {
             execute(dailyTasks);
         } else {

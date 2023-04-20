@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
+import top.xmlsj.signin.core.util.ConfigUtil;
 import top.xmlsj.signin.model.bilbil.apiquery.ApiList;
 import top.xmlsj.signin.model.bilbil.config.Config;
 import top.xmlsj.signin.model.bilbil.domain.entity.Account;
@@ -15,7 +16,6 @@ import top.xmlsj.signin.model.bilbil.task.impl.*;
 import top.xmlsj.signin.model.bilbil.utils.HttpUtil;
 import top.xmlsj.signin.task.SignInTaskExecution;
 import top.xmlsj.signin.task.SigninTask;
-import top.xmlsj.signin.util.YmlUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -56,7 +56,7 @@ public class BilBilTasks extends SignInTaskExecution {
     @Override
     public void runTask() {
         log.info("获取哔哩哔哩配置中........................");
-        BilBilConfig bilBilConfig = YmlUtil.readConfig("./config/bilbil.yml", BilBilConfig.class);
+        BilBilConfig bilBilConfig = ConfigUtil.readBilBilConfig();
         if (bilBilConfig.getEnabled()) {
             List<Account> accounts = bilBilConfig.getAccounts();
             log.info("获取到{}个账号,开始签到", accounts.size());

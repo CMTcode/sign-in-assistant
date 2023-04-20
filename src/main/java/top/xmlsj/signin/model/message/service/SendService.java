@@ -3,10 +3,10 @@ package top.xmlsj.signin.model.message.service;
 import com.alibaba.fastjson2.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import top.xmlsj.signin.core.util.ConfigUtil;
 import top.xmlsj.signin.model.message.constant.StrategyConstants;
 import top.xmlsj.signin.model.message.domain.pojo.MsgInfo;
 import top.xmlsj.signin.model.message.domain.pojo.config.MsgConfig;
-import top.xmlsj.signin.util.CoreUtil;
 
 import java.util.Arrays;
 
@@ -23,7 +23,7 @@ public class SendService {
     private static final MsgConfig MSG_CONFIG;
 
     static {
-        MSG_CONFIG = CoreUtil.readAppConfig().getMsg();
+        MSG_CONFIG = ConfigUtil.readAppConfig().getMsg();
     }
 
 

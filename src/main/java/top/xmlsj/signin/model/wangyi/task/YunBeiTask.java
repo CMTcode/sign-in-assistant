@@ -6,12 +6,12 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+import top.xmlsj.signin.core.util.ExceptionConstants;
 import top.xmlsj.signin.model.wangyi.domain.entity.MusicUser;
 import top.xmlsj.signin.model.wangyi.domain.pojo.CloudBeiRes;
 import top.xmlsj.signin.model.wangyi.service.MusicUserService;
 import top.xmlsj.signin.model.wangyi.util.NetEasseColudApi;
 import top.xmlsj.signin.task.SigninTask;
-import top.xmlsj.signin.util.ExceptionConstants;
 
 import javax.annotation.Resource;
 import java.util.HashMap;

@@ -4,13 +4,14 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
+import top.xmlsj.signin.core.util.ConfigUtil;
 import top.xmlsj.signin.model.wangyi.domain.pojo.WangYiConfig;
 import top.xmlsj.signin.model.wangyi.task.ListenToSongsTask;
+import top.xmlsj.signin.model.wangyi.task.Signin;
 import top.xmlsj.signin.model.wangyi.task.WangYiLoginCheckTask;
 import top.xmlsj.signin.model.wangyi.task.YunBeiTask;
 import top.xmlsj.signin.task.SignInTaskExecution;
 import top.xmlsj.signin.task.SigninTask;
-import top.xmlsj.signin.util.CoreUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -30,6 +31,7 @@ public class WangYiTasks extends SignInTaskExecution {
     private final YunBeiTask yunBeiTask;
     private final ListenToSongsTask listenToSongsTask;
     private final WangYiLoginCheckTask wangYiLoginCheckTask;
+    private final Signin signin;
 
 
     @Async("wangyiasync")
@@ -38,10 +40,11 @@ public class WangYiTasks extends SignInTaskExecution {
         List<SigninTask> dailyTasks = new ArrayList<>();
         dailyTasks.add(yunBeiTask);
         dailyTasks.add(listenToSongsTask);
+        dailyTasks.add(signin);
         Collections.shuffle(dailyTasks);
         dailyTasks.add(0, wangYiLoginCheckTask);
         log.info("获取网易云音配置中........................");
-        WangYiConfig config = CoreUtil.readWangYiConfig();
+        WangYiConfig config = ConfigUtil.readWangYiConfig();
         if (config.isEnabled()) {
             super.execute(dailyTasks);
         } else {

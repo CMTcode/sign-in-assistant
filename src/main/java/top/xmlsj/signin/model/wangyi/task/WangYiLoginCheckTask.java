@@ -5,14 +5,14 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+import top.xmlsj.signin.core.util.ConfigUtil;
+import top.xmlsj.signin.core.util.ExceptionConstants;
 import top.xmlsj.signin.model.message.service.SendService;
-import top.xmlsj.signin.model.wangyi.api.MusicApiService;
+import top.xmlsj.signin.model.wangyi.api.MusicApi;
 import top.xmlsj.signin.model.wangyi.domain.entity.MusicUser;
 import top.xmlsj.signin.model.wangyi.domain.pojo.WangYiConfig;
 import top.xmlsj.signin.model.wangyi.service.MusicUserService;
 import top.xmlsj.signin.task.SigninTask;
-import top.xmlsj.signin.util.CoreUtil;
-import top.xmlsj.signin.util.ExceptionConstants;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -29,7 +29,7 @@ public class WangYiLoginCheckTask implements SigninTask {
     private final String taskName = "登录检查";
 
     @Resource
-    private MusicApiService mapi;
+    private MusicApi mapi;
     @Resource
     private MusicUserService userService;
 
@@ -44,7 +44,7 @@ public class WangYiLoginCheckTask implements SigninTask {
     public void run() {
         // 清空数据库表数据
         userService.truncateTable();
-        WangYiConfig config = CoreUtil.readWangYiConfig();
+        WangYiConfig config = ConfigUtil.readWangYiConfig();
         List<MusicUser> accounts = config.getAccounts();
         Assert.notNull(accounts, ExceptionConstants.ACCOUNTS_NULL);
         //入库

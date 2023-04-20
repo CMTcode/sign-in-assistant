@@ -4,12 +4,12 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
+import top.xmlsj.signin.core.util.ConfigUtil;
 import top.xmlsj.signin.model.baidu.domain.pojo.BaiduConfig;
 import top.xmlsj.signin.model.baidu.task.BaiduLoginVerifyTask;
 import top.xmlsj.signin.model.baidu.task.BaiduSignInTask;
 import top.xmlsj.signin.task.SignInTaskExecution;
 import top.xmlsj.signin.task.SigninTask;
-import top.xmlsj.signin.util.CoreUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -37,7 +37,7 @@ public class BaiDuTask extends SignInTaskExecution {
         Collections.shuffle(dailyTasks);
         dailyTasks.add(0, loginVerifyTask);
         log.info("获取百度贴吧配置中........................");
-        BaiduConfig baiduConfig = CoreUtil.readBaiduConfig();
+        BaiduConfig baiduConfig = ConfigUtil.readBaiduConfig();
         if (baiduConfig.isEnabled()) {
             execute(dailyTasks);
         } else {
