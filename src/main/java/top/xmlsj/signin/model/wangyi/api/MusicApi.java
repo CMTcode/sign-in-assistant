@@ -95,16 +95,14 @@ public class MusicApi {
     /**
      * 获取用户
      *
-     * @param token
      * @param cookie
      * @return
      */
-    public JSONObject userLevel(String token, String cookie) {
-        String url = "https://music.163.com/weapi/user/level?csrf_token=" + token;
+    public JSONObject userLevel(String cookie) {
+        String url = "https://music.163.com/weapi/user/level?csrf_token=";
         Map headers = new HashMap<>();
         headers.put("crypto", "weapi");
         headers.put("Cookie", cookie);
-        headers.put("token", token);
         JSONObject param = new JSONObject();
         param.put("withCredentials", true);
         JSONObject info = NetEasseColudApi.api(param.toJSONString(), url, headers);

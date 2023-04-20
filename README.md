@@ -10,6 +10,10 @@
 
 默认每日 04:01 开始每日签到任务,要修改请更改config/appconfig.yml内的scheduled.cron值
 
+### 项目环境
+
+SpringBoot 3.0.5 , JDK 17
+
 ### 功能介绍
 
 #### 百度贴吧
