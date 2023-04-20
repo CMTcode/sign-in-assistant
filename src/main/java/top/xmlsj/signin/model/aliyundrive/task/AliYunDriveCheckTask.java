@@ -8,14 +8,14 @@ import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+import top.xmlsj.signin.core.util.ConfigUtil;
+import top.xmlsj.signin.core.util.ExceptionConstants;
 import top.xmlsj.signin.model.aliyundrive.constant.AliYunConst;
 import top.xmlsj.signin.model.aliyundrive.domain.entity.AliYunDriveConfig;
 import top.xmlsj.signin.model.aliyundrive.domain.entity.AliYunDriveUser;
 import top.xmlsj.signin.model.aliyundrive.service.AliyundriveUserService;
 import top.xmlsj.signin.model.message.service.SendService;
 import top.xmlsj.signin.task.SigninTask;
-import top.xmlsj.signin.util.CoreUtil;
-import top.xmlsj.signin.util.ExceptionConstants;
 
 import java.util.HashMap;
 import java.util.List;
@@ -47,7 +47,7 @@ public class AliYunDriveCheckTask implements SigninTask {
     public void run() {
         // 清空数据库表数据
         userService.truncateTable();
-        AliYunDriveConfig config = CoreUtil.readAliYunDriveConfig();
+        AliYunDriveConfig config = ConfigUtil.readAliYunDriveConfig();
         List<AliYunDriveUser> accounts = config.getAccounts();
         Assert.notNull(accounts, ExceptionConstants.ACCOUNTS_NULL);
         //入库

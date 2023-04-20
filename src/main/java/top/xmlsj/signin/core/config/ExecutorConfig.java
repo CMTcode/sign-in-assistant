@@ -15,6 +15,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 @Configuration
 public class ExecutorConfig {
 
+
     private Executor baseExecutor(String threadName) {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         //配置核心线程数

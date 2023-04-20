@@ -1,0 +1,14 @@
+# 哔哩哔哩配置
+# 是否开启 false 关闭  true 开启
+enabled: false
+# name任意填 ，网页F12获取哔哩哔哩cookie内的这三项 不会的百度
+# 可选参数
+#  预留的硬币数 reserveCoins
+#  送礼 up 主的 uid，默认0为自己 upLive
+# 充电对象的 uid，默认0为自己 chargeForLove
+#  支持多账号
+accounts:
+  - name: xxx
+    DEDEUSERID: xxx
+    SESSDATA: xxx
+    BILI_JCT: xxx

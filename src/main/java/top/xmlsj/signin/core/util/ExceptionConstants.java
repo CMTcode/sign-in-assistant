@@ -1,4 +1,4 @@
-package top.xmlsj.signin.util;
+package top.xmlsj.signin.core.util;
 
 /**
  * Created on 2023/3/18.

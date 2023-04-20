@@ -6,13 +6,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+import top.xmlsj.signin.core.util.ConfigUtil;
+import top.xmlsj.signin.core.util.ExceptionConstants;
 import top.xmlsj.signin.model.baidu.domain.entity.BaiduUser;
 import top.xmlsj.signin.model.baidu.service.BaiduUserService;
 import top.xmlsj.signin.model.baidu.util.TiebaSignUtil;
 import top.xmlsj.signin.model.message.service.SendService;
 import top.xmlsj.signin.task.SigninTask;
-import top.xmlsj.signin.util.CoreUtil;
-import top.xmlsj.signin.util.ExceptionConstants;
 
 import java.util.List;
 
@@ -36,7 +36,7 @@ public class BaiduLoginVerifyTask implements SigninTask {
      */
     @Override
     public void run() {
-        List<BaiduUser> accounts = CoreUtil.readBaiduConfig().getAccounts();
+        List<BaiduUser> accounts = ConfigUtil.readBaiduConfig().getAccounts();
         Assert.notNull(accounts, ExceptionConstants.ACCOUNTS_NULL);
         userService.saveBatch(accounts);
         accounts.forEach(u -> {

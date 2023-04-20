@@ -2,7 +2,7 @@ package top.xmlsj.signin.task;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import top.xmlsj.signin.util.CoreUtil;
+import top.xmlsj.signin.core.util.CoreUtil;
 
 import java.util.List;
 

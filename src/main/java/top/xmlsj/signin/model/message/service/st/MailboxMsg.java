@@ -4,10 +4,10 @@ import cn.hutool.extra.mail.MailAccount;
 import cn.hutool.extra.mail.MailUtil;
 import com.alibaba.fastjson2.JSONObject;
 import org.springframework.stereotype.Component;
+import top.xmlsj.signin.core.util.ConfigUtil;
 import top.xmlsj.signin.model.message.domain.pojo.MsgInfo;
 import top.xmlsj.signin.model.message.domain.pojo.config.MailboxConfig;
 import top.xmlsj.signin.model.message.service.MsgStrategyService;
-import top.xmlsj.signin.util.CoreUtil;
 
 /**
  * Created on 2023/4/1.
@@ -20,7 +20,7 @@ public class MailboxMsg implements MsgStrategyService {
     private static final MailboxConfig MAILBOX;
 
     static {
-        MAILBOX = CoreUtil.readAppConfig().getMsg().getPushConfig().getMailbox();
+        MAILBOX = ConfigUtil.readAppConfig().getMsg().getPushConfig().getMailbox();
     }
 
     private MailAccount initAccount() {
