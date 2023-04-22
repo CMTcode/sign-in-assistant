@@ -4,6 +4,8 @@ package top.xmlsj.signin.model.wangyi.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import top.xmlsj.signin.model.wangyi.domain.entity.MusicUser;
 
+import java.util.List;
+
 
 /**
  * @author CMT
@@ -12,5 +14,14 @@ import top.xmlsj.signin.model.wangyi.domain.entity.MusicUser;
  */
 public interface MusicUserService extends IService<MusicUser> {
 
-    void truncateTable();
+    void init();
+
+
+    /**
+     * 获取登录正常的用户
+     *
+     * @return
+     */
+    List<MusicUser> listNormal();
+
 }

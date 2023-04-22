@@ -59,7 +59,7 @@ public class BaiduCoreService {
      */
     public List<Forum> getForums(String bduss) {
         List<Forum> forums = new LinkedList<>();
-        String forumsPage = null;
+        String forumsPage;
         try {
             forumsPage = TiebaSignUtil.getForums(bduss);
         } catch (Exception e) {

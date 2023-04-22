@@ -8,6 +8,9 @@ spring:
   datasource:
     driver-class-name: org.sqlite.JDBC
     url: jdbc:sqlite::resource:data/data.db
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      maximum-pool-size: 1
 
 mybatis-plus:
   mapperLocations: classpath*:mapper/**/*Mapper.xml

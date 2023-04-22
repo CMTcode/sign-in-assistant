@@ -3,8 +3,6 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="top.xmlsj.signin.model.aliyundrive.mapper.AliyundriveUserMapper">
-
-
     <select id="truncateTable">
         delete
         from aliyundrive_user;

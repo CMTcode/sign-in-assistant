@@ -10,5 +10,7 @@ import top.xmlsj.signin.model.aliyundrive.domain.entity.AliYunDriveUser;
  * @createDate 2023-03-25 16:44:51
  */
 public interface AliyundriveUserService extends IService<AliYunDriveUser> {
-    void truncateTable();
+    void init();
+
+
 }

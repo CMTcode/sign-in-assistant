@@ -33,7 +33,7 @@ public class SendService {
         this.msgStrategyContext = msgStrategyContext;
     }
 
-    private String title = "sigin签到助手";
+    private final String title = "sigin签到助手";
 
 
     public void send(String msg) {

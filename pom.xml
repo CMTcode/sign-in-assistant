@@ -105,7 +105,6 @@
             <artifactId>javax.mail</artifactId>
             <version>${javax.mail.version}</version>
         </dependency>
-
     </dependencies>
     <repositories>
         <!--依赖源-->

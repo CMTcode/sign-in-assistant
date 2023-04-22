@@ -6,6 +6,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import top.xmlsj.signin.core.util.ConfigUtil;
 import top.xmlsj.signin.model.aliyundrive.domain.entity.AliYunDriveConfig;
+import top.xmlsj.signin.model.aliyundrive.service.AliyundriveUserService;
 import top.xmlsj.signin.model.aliyundrive.task.AliYunDeriveSignTask;
 import top.xmlsj.signin.model.aliyundrive.task.AliYunDriveCheckTask;
 import top.xmlsj.signin.task.SignInTaskExecution;
@@ -17,6 +18,7 @@ import java.util.List;
 
 /**
  * Created on 2023/3/25.
+ * 阿里云网盘入口
  *
  * @author Yang YaoWei
  */
@@ -27,6 +29,7 @@ public class AliYunTask extends SignInTaskExecution {
 
     private final AliYunDeriveSignTask aliYunDeriveSignTask;
     private final AliYunDriveCheckTask aliYunDriveCheckTask;
+    private final AliyundriveUserService userService;
 
     @Async("aliYunDeriveasync")
     @Override
@@ -39,6 +42,7 @@ public class AliYunTask extends SignInTaskExecution {
         log.info("获取阿里云网盘配置中........................");
         AliYunDriveConfig config = ConfigUtil.readAliYunDriveConfig();
         if (config.isEnabled()) {
+            userService.init();
             execute(dailyTasks);
         } else {
             log.info("阿里云网盘 [未启用]");

@@ -5,12 +5,10 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
-import top.xmlsj.signin.core.util.ConfigUtil;
 import top.xmlsj.signin.core.util.ExceptionConstants;
 import top.xmlsj.signin.model.message.service.SendService;
 import top.xmlsj.signin.model.wangyi.api.MusicApi;
 import top.xmlsj.signin.model.wangyi.domain.entity.MusicUser;
-import top.xmlsj.signin.model.wangyi.domain.pojo.WangYiConfig;
 import top.xmlsj.signin.model.wangyi.service.MusicUserService;
 import top.xmlsj.signin.task.SigninTask;
 
@@ -42,16 +40,11 @@ public class WangYiLoginCheckTask implements SigninTask {
      */
     @Override
     public void run() {
-        // 清空数据库表数据
-        userService.truncateTable();
-        WangYiConfig config = ConfigUtil.readWangYiConfig();
-        List<MusicUser> accounts = config.getAccounts();
+        List<MusicUser> accounts = userService.list();
         Assert.notNull(accounts, ExceptionConstants.ACCOUNTS_NULL);
-        //入库
-        userService.saveBatch(accounts);
         accounts.forEach(u -> {
             log.debug("user：{}", u.toString());
-            JSONObject jsonObject = mapi.userLevel(u.getToken(), u.getCookie());
+            JSONObject jsonObject = mapi.userLevel(u.getCookie());
             log.debug(jsonObject.toString());
             Integer code = jsonObject.getInteger("code");
             if (code == 200) {

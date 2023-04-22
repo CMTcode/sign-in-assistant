@@ -40,11 +40,10 @@ public class YunBeiTask implements SigninTask {
         Assert.notNull(accounts, ExceptionConstants.ACCOUNTS_NULL);
         accounts.forEach(u -> {
             log.info("用户：{} 开始云贝签到！！！", u.getName());
-            String url = "https://music.163.com/weapi/point/dailyTask?csrf_token=" + u.getToken();
+            String url = "https://music.163.com/weapi/point/dailyTask?csrf_token=";
             Map<String, String> headers = new HashMap<>(3);
             headers.put("crypto", "weapi");
             headers.put("Cookie", u.getCookie());
-            headers.put("token", u.getToken());
             JSONObject param = new JSONObject();
             param.put("type", 0);
             param.put("withCredentials", true);

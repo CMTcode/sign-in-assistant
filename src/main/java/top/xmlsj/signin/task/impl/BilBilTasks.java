@@ -25,6 +25,7 @@ import static top.xmlsj.signin.model.bilbil.task.impl.TaskInfoHolder.STATUS_CODE
 
 /**
  * Created on 2023/3/7.
+ * 哔哩哔哩主任务
  *
  * @author Yang YaoWei
  */

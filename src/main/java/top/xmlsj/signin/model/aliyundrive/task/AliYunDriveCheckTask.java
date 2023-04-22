@@ -7,10 +7,8 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
-import top.xmlsj.signin.core.util.ConfigUtil;
 import top.xmlsj.signin.core.util.ExceptionConstants;
 import top.xmlsj.signin.model.aliyundrive.constant.AliYunConst;
-import top.xmlsj.signin.model.aliyundrive.domain.entity.AliYunDriveConfig;
 import top.xmlsj.signin.model.aliyundrive.domain.entity.AliYunDriveUser;
 import top.xmlsj.signin.model.aliyundrive.service.AliyundriveUserService;
 import top.xmlsj.signin.model.message.service.SendService;
@@ -45,13 +43,8 @@ public class AliYunDriveCheckTask implements SigninTask {
      */
     @Override
     public void run() {
-        // 清空数据库表数据
-        userService.truncateTable();
-        AliYunDriveConfig config = ConfigUtil.readAliYunDriveConfig();
-        List<AliYunDriveUser> accounts = config.getAccounts();
+        List<AliYunDriveUser> accounts = userService.list();
         Assert.notNull(accounts, ExceptionConstants.ACCOUNTS_NULL);
-        //入库
-        userService.saveBatch(accounts);
         accounts.forEach(u -> {
             HashMap<String, Object> params = new HashMap<>();
             params.put("grant_type", "refresh_token");
