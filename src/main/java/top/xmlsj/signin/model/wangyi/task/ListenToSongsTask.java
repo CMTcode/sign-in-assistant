@@ -92,7 +92,7 @@ public class ListenToSongsTask implements SigninTask {
                         JSONObject listenResult = api.listenSong(user.getCookie(), String.valueOf(songId), String.valueOf(sourceId));
                         if (listenResult != null && listenResult.getInteger("code") == 200) {
                             successCount++;
-                            log.info(user.getName() + ": 第" + successCount + "首 : " + sourceId + "===>>歌曲ID : " + songId + "目标 ：" + upperLimit);
+                            log.info(user.getName() + ": 第" + successCount + "首 : " + "====>>歌单id:" + sourceId + "===>>歌曲ID : " + songId + "目标 ：" + upperLimit);
                             Thread.sleep(500);
                             //每100首检测一次
                             if (successCount >= 300 && successCount % 50 == 0) {

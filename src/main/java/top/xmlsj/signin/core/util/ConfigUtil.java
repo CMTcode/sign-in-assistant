@@ -62,4 +62,5 @@ public class ConfigUtil {
     public static AppConfig readAppConfig() {
         return readConfig(ConfigPathEnum.APP, AppConfig.class);
     }
+
 }

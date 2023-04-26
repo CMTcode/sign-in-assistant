@@ -35,6 +35,7 @@ public class AliYunDriveUser implements Serializable {
      *
      */
     private String token;
+
     /**
      *
      */

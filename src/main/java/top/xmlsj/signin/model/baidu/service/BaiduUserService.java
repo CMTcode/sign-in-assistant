@@ -10,4 +10,6 @@ import top.xmlsj.signin.model.baidu.domain.entity.BaiduUser;
  */
 public interface BaiduUserService extends IService<BaiduUser> {
 
+    void init();
+
 }
