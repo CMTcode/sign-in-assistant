@@ -6,7 +6,6 @@ import org.springframework.context.ApplicationContext;
 import top.xmlsj.signin.core.util.CoreUtil;
 import top.xmlsj.signin.task.SignInTimedTasks;
 
-
 /**
  * @author ForkManTou
  */
