@@ -5,6 +5,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import lombok.Data;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.util.Assert;
 import top.xmlsj.signin.model.bilbil.apiquery.ApiList;
 import top.xmlsj.signin.model.bilbil.domain.login.Verify;
 import top.xmlsj.signin.model.bilbil.task.ExtensionMethod;
@@ -30,6 +31,7 @@ public class GetVideoId {
         this.followUpVideoList = queryDynamicNew();
         this.rankVideoList = regionRanking();
         videoUpdate("14602398");
+//        videoUpdate("50329118");
         if (this.followUpVideoList.size() > 0) {
             this.followUpVideoQueue = new ArrayBlockingQueue<>(followUpVideoList.size());
             this.followUpVideoQueue.addAll(followUpVideoList);
@@ -137,6 +139,7 @@ public class GetVideoId {
     public void videoUpdate(String mid) {
         String urlParam = "?mid=" + mid + "&ps=30&tid=0&pn=1&keyword=&order=pubdate&jsonp=jsonp";
         JsonObject resultJson = HttpUtil.doGet(ApiList.getBvidByCreate + urlParam);
+        Assert.isNull(resultJson, "获取视频失败");
         JsonArray jsonArray = resultJson.getAsJsonObject("data").getAsJsonObject("list").getAsJsonArray("vlist");
 
         if (jsonArray != null) {

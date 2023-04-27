@@ -5,7 +5,7 @@ import com.google.gson.JsonObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import top.xmlsj.signin.model.bilbil.apiquery.ApiList;
-import top.xmlsj.signin.model.bilbil.domain.pojo.userinfobean.Data;
+import top.xmlsj.signin.model.bilbil.domain.pojo.userinfobean.BilBilUserData;
 import top.xmlsj.signin.model.bilbil.utils.HelpUtil;
 import top.xmlsj.signin.model.bilbil.utils.HttpUtil;
 import top.xmlsj.signin.model.message.service.SendService;
@@ -46,7 +46,7 @@ public class UserCheck implements SigninTask {
             if (userJson.get(STATUS_CODE_STR).getAsInt() == 0
                     && userJson.get("data").getAsJsonObject().get("isLogin").getAsBoolean()) {
                 userInfo = new Gson().fromJson(userJson
-                        .getAsJsonObject("data"), Data.class);
+                        .getAsJsonObject("data"), BilBilUserData.class);
                 log.info("Cookies有效，登录成功");
                 log.info("用户名称: {}", HelpUtil.userNameEncode(userInfo.getUname()));
                 log.info("硬币余额: " + userInfo.getMoney());

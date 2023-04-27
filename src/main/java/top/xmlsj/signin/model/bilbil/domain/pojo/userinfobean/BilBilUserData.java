@@ -11,7 +11,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class Data {
+public class BilBilUserData {
 
     private boolean isLogin;
     private int email_verified;

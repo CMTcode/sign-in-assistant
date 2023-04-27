@@ -152,7 +152,7 @@ public class HttpUtil {
             HttpEntity entity = httpResponse.getEntity();
             // 通过EntityUtils中的toString方法将结果转换为字符串
             String result = EntityUtils.toString(entity);
-            resultJson = new JsonParser().parse(result).getAsJsonObject();
+            resultJson = JsonParser.parseString(result).getAsJsonObject();
             switch (responseStatusCode) {
                 case 200:
                     break;
