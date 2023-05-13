@@ -5,9 +5,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import top.xmlsj.signin.core.util.ConfigUtil;
-import top.xmlsj.signin.model.baidu.domain.pojo.BaiduConfig;
-import top.xmlsj.signin.model.baidu.task.BaiduLoginVerifyTask;
-import top.xmlsj.signin.model.baidu.task.BaiduSignInTask;
+import top.xmlsj.signin.script.baidu.domain.pojo.BaiduConfig;
+import top.xmlsj.signin.script.baidu.task.BaiduLoginVerifyTask;
+import top.xmlsj.signin.script.baidu.task.BaiduSignInTask;
 import top.xmlsj.signin.task.SignInTaskExecution;
 import top.xmlsj.signin.task.SigninTask;
 

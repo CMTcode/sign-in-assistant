@@ -13,6 +13,7 @@ import java.util.Arrays;
 
 /**
  * Created on 2023/4/2.
+ * 消息发送服务
  *
  * @author Yang YaoWei
  */
@@ -33,14 +34,14 @@ public class SendService {
         this.msgStrategyContext = msgStrategyContext;
     }
 
-    private final String title = "sigin签到助手";
+    private final String Title = "sigin签到助手";
 
 
     public void send(String msg) {
         if (Arrays.asList(StrategyConstants.MSG_STRATEGY).contains(MSG_CONFIG.getPushType())) {
             if (!"none".equals(MSG_CONFIG.getPushType())) {
                 MsgInfo info = MsgInfo.builder()
-                        .title(title)
+                        .title(Title)
                         .messageType(MSG_CONFIG.getPushType())
                         .message(msg).build();
                 JSONObject send = msgStrategyContext.send(info);

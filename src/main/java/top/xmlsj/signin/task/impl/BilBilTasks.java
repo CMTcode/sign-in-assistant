@@ -7,13 +7,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import top.xmlsj.signin.core.util.ConfigUtil;
-import top.xmlsj.signin.model.bilbil.apiquery.ApiList;
-import top.xmlsj.signin.model.bilbil.config.Config;
-import top.xmlsj.signin.model.bilbil.domain.entity.Account;
-import top.xmlsj.signin.model.bilbil.domain.entity.BilBilConfig;
-import top.xmlsj.signin.model.bilbil.domain.login.Verify;
-import top.xmlsj.signin.model.bilbil.task.impl.*;
-import top.xmlsj.signin.model.bilbil.utils.HttpUtil;
+import top.xmlsj.signin.script.bilbil.apiquery.ApiList;
+import top.xmlsj.signin.script.bilbil.config.Config;
+import top.xmlsj.signin.script.bilbil.domain.entity.Account;
+import top.xmlsj.signin.script.bilbil.domain.entity.BilBilConfig;
+import top.xmlsj.signin.script.bilbil.domain.login.Verify;
+import top.xmlsj.signin.script.bilbil.task.impl.*;
+import top.xmlsj.signin.script.bilbil.utils.HttpUtil;
 import top.xmlsj.signin.task.SignInTaskExecution;
 import top.xmlsj.signin.task.SigninTask;
 
@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static top.xmlsj.signin.model.bilbil.task.impl.TaskInfoHolder.STATUS_CODE_STR;
+import static top.xmlsj.signin.script.bilbil.task.impl.TaskInfoHolder.STATUS_CODE_STR;
 
 /**
  * Created on 2023/3/7.

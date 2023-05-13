@@ -21,7 +21,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @EnableTransactionManagement(proxyTargetClass = true)
 @Configuration
-@MapperScan({"top.xmlsj.signin.model.**.mapper"})
+@MapperScan({"top.xmlsj.signin.script.**.db"})
 public class MybatisPlusConfig {
     @Bean
     public MybatisPlusInterceptor mybatisPlusInterceptor() {

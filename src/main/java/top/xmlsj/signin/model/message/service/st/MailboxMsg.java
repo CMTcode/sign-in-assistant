@@ -23,6 +23,11 @@ public class MailboxMsg implements MsgStrategyService {
         MAILBOX = ConfigUtil.readAppConfig().getMsg().getPushConfig().getMailbox();
     }
 
+    /**
+     * 初始化邮件配置
+     *
+     * @return
+     */
     private MailAccount initAccount() {
         MailAccount mailAccount = new MailAccount();
         mailAccount.setHost(MAILBOX.getHost());

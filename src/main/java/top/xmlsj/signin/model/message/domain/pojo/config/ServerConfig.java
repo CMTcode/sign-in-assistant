@@ -4,6 +4,7 @@ import lombok.Data;
 
 /**
  * Created on 2023/4/3.
+ * Server酱配置
  *
  * @author Yang YaoWei
  */
