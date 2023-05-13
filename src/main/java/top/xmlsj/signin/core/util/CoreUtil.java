@@ -2,9 +2,9 @@ package top.xmlsj.signin.core.util;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
-import top.xmlsj.signin.model.aliyundrive.service.AliyundriveUserService;
-import top.xmlsj.signin.model.baidu.service.BaiduUserService;
-import top.xmlsj.signin.model.wangyi.service.MusicUserService;
+import top.xmlsj.signin.script.aliyundrive.service.AliyundriveUserService;
+import top.xmlsj.signin.script.baidu.service.BaiduUserService;
+import top.xmlsj.signin.script.wangyi.service.MusicUserService;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

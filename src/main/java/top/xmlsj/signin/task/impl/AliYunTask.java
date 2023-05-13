@@ -5,9 +5,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import top.xmlsj.signin.core.util.ConfigUtil;
-import top.xmlsj.signin.model.aliyundrive.domain.entity.AliYunDriveConfig;
-import top.xmlsj.signin.model.aliyundrive.task.AliYunDeriveSignTask;
-import top.xmlsj.signin.model.aliyundrive.task.AliYunDriveCheckTask;
+import top.xmlsj.signin.script.aliyundrive.domain.entity.AliYunDriveConfig;
+import top.xmlsj.signin.script.aliyundrive.task.AliYunDeriveSignTask;
+import top.xmlsj.signin.script.aliyundrive.task.AliYunDriveCheckTask;
 import top.xmlsj.signin.task.SignInTaskExecution;
 import top.xmlsj.signin.task.SigninTask;
 

@@ -5,11 +5,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import top.xmlsj.signin.core.util.ConfigUtil;
-import top.xmlsj.signin.model.wangyi.domain.pojo.WangYiConfig;
-import top.xmlsj.signin.model.wangyi.task.ListenToSongsTask;
-import top.xmlsj.signin.model.wangyi.task.Signin;
-import top.xmlsj.signin.model.wangyi.task.WangYiLoginCheckTask;
-import top.xmlsj.signin.model.wangyi.task.YunBeiTask;
+import top.xmlsj.signin.script.wangyi.domain.pojo.WangYiConfig;
+import top.xmlsj.signin.script.wangyi.task.ListenToSongsTask;
+import top.xmlsj.signin.script.wangyi.task.Signin;
+import top.xmlsj.signin.script.wangyi.task.WangYiLoginCheckTask;
+import top.xmlsj.signin.script.wangyi.task.YunBeiTask;
 import top.xmlsj.signin.task.SignInTaskExecution;
 import top.xmlsj.signin.task.SigninTask;
 

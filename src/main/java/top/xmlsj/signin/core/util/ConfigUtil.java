@@ -1,11 +1,11 @@
 package top.xmlsj.signin.core.util;
 
 import top.xmlsj.signin.core.config.app.AppConfig;
-import top.xmlsj.signin.core.enums.ConfigPathEnum;
-import top.xmlsj.signin.model.aliyundrive.domain.entity.AliYunDriveConfig;
-import top.xmlsj.signin.model.baidu.domain.pojo.BaiduConfig;
-import top.xmlsj.signin.model.bilbil.domain.entity.BilBilConfig;
-import top.xmlsj.signin.model.wangyi.domain.pojo.WangYiConfig;
+import top.xmlsj.signin.core.config.app.ConfigPathEnum;
+import top.xmlsj.signin.script.aliyundrive.domain.entity.AliYunDriveConfig;
+import top.xmlsj.signin.script.baidu.domain.pojo.BaiduConfig;
+import top.xmlsj.signin.script.bilbil.domain.entity.BilBilConfig;
+import top.xmlsj.signin.script.wangyi.domain.pojo.WangYiConfig;
 
 import java.io.IOException;
 
