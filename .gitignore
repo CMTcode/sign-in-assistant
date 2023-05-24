@@ -16,7 +16,7 @@ HELP.md
 !**/src/test/**/target/
 logs/
 src/test/
-
+config/
 ### STS ###
 .apt_generated
 .classpath
@@ -44,3 +44,5 @@ build/
 
 ### VS Code ###
 .vscode/
+/.fastRequest/collections/Root/Default Group/directory.json
+/.fastRequest/collections/Root/directory.json

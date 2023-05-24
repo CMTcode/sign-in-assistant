@@ -74,8 +74,8 @@ public class BilBilTasks extends SignInTaskExecution {
                 List<SigninTask> dailyTasks;
                 dailyTasks = new ArrayList<>();
                 // TODO 暂时关闭待重写哔哩哔哩任务
-//              dailyTasks.add(new VideoWatch());
-//              dailyTasks.add(new CoinAdd());
+                dailyTasks.add(new VideoWatch());
+                dailyTasks.add(new CoinAdd());
                 dailyTasks.add(new MangaSign());
                 dailyTasks.add(new MangaRead());
                 dailyTasks.add(new LiveCheckin());
