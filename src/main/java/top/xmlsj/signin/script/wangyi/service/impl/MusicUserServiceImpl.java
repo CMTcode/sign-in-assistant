@@ -35,7 +35,8 @@ public class MusicUserServiceImpl extends ServiceImpl<MusicUserMapper, MusicUser
         // 读取用户数据
         List<MusicUser> accounts = config.getAccounts();
         if (count() > 0) {
-            accounts.forEach(u -> saveOrUpdate(u, new QueryWrapper<MusicUser>().eq("name", u.getName())));
+            getBaseMapper().truncateTable();
+            saveBatch(accounts);
         } else {
             saveBatch(accounts);
         }

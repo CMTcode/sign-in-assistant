@@ -32,7 +32,8 @@ public class AliyundriveUserServiceImpl extends ServiceImpl<AliyundriveUserMappe
         // 读取用户数据
         List<AliYunDriveUser> accounts = config.getAccounts();
         if (count() > 0) {
-            accounts.forEach(u -> saveOrUpdate(u, new QueryWrapper<AliYunDriveUser>().eq("name", u.getName())));
+            getBaseMapper().truncateTable();
+            saveBatch(accounts);
         } else {
             saveBatch(accounts);
         }

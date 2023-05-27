@@ -10,6 +10,7 @@ import top.xmlsj.signin.script.baidu.domain.entity.BaiduUser;
  * @Entity top.xmlsj.signin.model.baidu.domain.entity.BaiduUser
  */
 public interface BaiduUserMapper extends BaseMapper<BaiduUser> {
+    void truncateTable();
 
 }
 
