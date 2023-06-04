@@ -19,6 +19,9 @@ public class Application {
         CoreUtil.initialize(applicationContext);
         // 运行一次签到线程
         applicationContext.getBean(SignInTimedTasks.class).start();
+//
+
+//
     }
 
 }
