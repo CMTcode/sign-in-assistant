@@ -5,17 +5,20 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.http.HttpEntity;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.util.EntityUtils;
+import org.apache.hc.client5.http.classic.methods.HttpGet;
+import org.apache.hc.client5.http.classic.methods.HttpPost;
+import org.apache.hc.client5.http.config.RequestConfig;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.core5.http.ContentType;
+import org.apache.hc.core5.http.HttpEntity;
+import org.apache.hc.core5.http.NameValuePair;
+import org.apache.hc.core5.http.ParseException;
+import org.apache.hc.core5.http.io.entity.EntityUtils;
+import org.apache.hc.core5.http.io.entity.StringEntity;
+import org.apache.hc.core5.http.message.BasicNameValuePair;
+import org.apache.hc.core5.util.Timeout;
 import top.xmlsj.signin.script.bilbil.domain.login.Verify;
 
 import java.io.IOException;
@@ -36,9 +39,9 @@ public class HttpUtil {
      * 设置连接请求超时时间
      * 设置读取数据连接超时时间
      */
-    private static final RequestConfig REQUEST_CONFIG = RequestConfig.custom().setConnectTimeout(5000)
-            .setConnectionRequestTimeout(5000)
-            .setSocketTimeout(10000)
+    private static final RequestConfig REQUEST_CONFIG = RequestConfig.custom().setConnectTimeout(Timeout.ofDays(5000))
+            .setConnectionRequestTimeout(Timeout.ofDays(5000))
+//            .setSocketTimeout(10000)
             .build();
     static Verify verify = Verify.getInstance();
     private static String userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_2_3) " +
@@ -85,7 +88,7 @@ public class HttpUtil {
         }
         // 封装post请求参数
 
-        StringEntity stringEntity = new StringEntity(requestBody, "utf-8");
+        StringEntity stringEntity = new StringEntity(requestBody, ContentType.parse("utf-8"));
 
         httpPost.setEntity(stringEntity);
 
@@ -143,10 +146,10 @@ public class HttpUtil {
 
     }
 
-    public static JsonObject processResult(CloseableHttpResponse httpResponse) throws IOException {
+    public static JsonObject processResult(CloseableHttpResponse httpResponse) throws IOException, ParseException {
         JsonObject resultJson = null;
         if (httpResponse != null) {
-            int responseStatusCode = httpResponse.getStatusLine().getStatusCode();
+            int responseStatusCode = httpResponse.getCode();
             // 从响应对象中获取响应内容
             // 通过返回对象获取返回数据
             HttpEntity entity = httpResponse.getEntity();
@@ -157,7 +160,7 @@ public class HttpUtil {
                 case 200:
                     break;
                 case 412:
-                    log.debug("{}", httpResponse.getStatusLine());
+                    log.debug("{}", httpResponse.getCode());
                     break;
                 default:
             }

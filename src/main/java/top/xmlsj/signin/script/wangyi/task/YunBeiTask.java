@@ -3,6 +3,7 @@ package top.xmlsj.signin.script.wangyi.task;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -13,7 +14,6 @@ import top.xmlsj.signin.script.wangyi.service.MusicUserService;
 import top.xmlsj.signin.script.wangyi.util.NetEasseColudApi;
 import top.xmlsj.signin.task.SigninTask;
 
-import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,11 +25,12 @@ import java.util.Map;
  */
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class YunBeiTask implements SigninTask {
     private static final String NAME = "云贝签到";
 
-    @Resource
-    private MusicUserService userService;
+
+    private final MusicUserService userService;
 
     /**
      * 任务实现

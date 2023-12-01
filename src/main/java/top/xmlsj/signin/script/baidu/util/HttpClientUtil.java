@@ -1,15 +1,15 @@
 package top.xmlsj.signin.script.baidu.util;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.util.EntityUtils;
+import org.apache.hc.client5.http.classic.methods.HttpPost;
+import org.apache.hc.client5.http.entity.UrlEncodedFormEntity;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
+import org.apache.hc.core5.http.NameValuePair;
+import org.apache.hc.core5.http.io.entity.EntityUtils;
+import org.apache.hc.core5.http.message.BasicNameValuePair;
 import top.xmlsj.signin.script.baidu.domain.pojo.ResponseVo;
 
 import java.io.IOException;
@@ -55,7 +55,7 @@ public class HttpClientUtil {
                 pairs.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
             }
         }
-        UrlEncodedFormEntity formEntity = new UrlEncodedFormEntity(pairs, "utf-8");
+        UrlEncodedFormEntity formEntity = new UrlEncodedFormEntity(pairs);
         httpPost.setEntity(formEntity);
         String content = null;
         CloseableHttpResponse response = null;
@@ -64,7 +64,7 @@ public class HttpClientUtil {
             //使用HttpClient发起请求
             response = client.execute(httpPost);
             //判断响应状态码是否为200
-            if (response.getStatusLine().getStatusCode() == 200) {
+            if (response.getCode() == 200) {
                 //如果为200表示请求成功，获取返回数据
                 content = EntityUtils.toString(response.getEntity(), "UTF-8");
                 responseVo = new ResponseVo().setResponse(response).setResponseStr(content);

@@ -1,6 +1,7 @@
 package top.xmlsj.signin.script.baidu.domain.pojo;
 
-import org.apache.http.client.methods.CloseableHttpResponse;
+
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
 
 /**
  * Author: Yang

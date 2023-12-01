@@ -1,8 +1,8 @@
 package top.xmlsj.signin.model.message.service.st;
 
 import com.alibaba.fastjson2.JSONObject;
-import kong.unirest.HttpResponse;
-import kong.unirest.Unirest;
+import kong.unirest.core.HttpResponse;
+import kong.unirest.core.Unirest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import top.xmlsj.signin.core.util.ConfigUtil;

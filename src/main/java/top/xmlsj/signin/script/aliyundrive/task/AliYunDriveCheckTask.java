@@ -4,6 +4,7 @@ import cn.hutool.http.HttpRequest;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -14,7 +15,6 @@ import top.xmlsj.signin.script.aliyundrive.domain.entity.AliYunDriveUser;
 import top.xmlsj.signin.script.aliyundrive.service.AliyundriveUserService;
 import top.xmlsj.signin.task.SigninTask;
 
-import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
 
@@ -26,15 +26,14 @@ import java.util.List;
  */
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class AliYunDriveCheckTask implements SigninTask {
 
     private static final String NAME = "登录检查";
 
-    @Resource
-    private AliyundriveUserService userService;
+    private final AliyundriveUserService userService;
 
-    @Resource
-    private SendService sendService;
+    private final SendService sendService;
 
     private int STATE = 0;
 

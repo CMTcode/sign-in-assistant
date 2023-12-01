@@ -5,27 +5,39 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.5.14</version>
+        <version>3.2.0</version>
         <relativePath/>
     </parent>
     <groupId>top.xmlsj</groupId>
     <artifactId>signin</artifactId>
-    <version>v0.7.2</version>
+    <version>v0.8.0</version>
     <name>signin</name>
     <description>signin</description>
     <properties>
-        <java.version>8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!-- 三方包版本号   -->
-        <unirest.vaersion>3.14.2</unirest.vaersion>
-        <fastjson.version>2.0.25</fastjson.version>
-        <hutool.version>5.8.15</hutool.version>
-        <yumbo-music.version>1.2.3</yumbo-music.version>
-        <mybatis-plus.version>3.5.3.1</mybatis-plus.version>
+        <unirest.vaersion>4.2.0</unirest.vaersion>
+        <fastjson.version>2.0.42</fastjson.version>
+        <hutool.version>5.8.23</hutool.version>
+        <mybatis-plus.version>3.5.4.1</mybatis-plus.version>
+        <mybatis-plus-join.version>1.4.7.2</mybatis-plus-join.version>
         <javax.mail.version>1.6.2</javax.mail.version>
         <jsoup.version>1.15.4</jsoup.version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- https://mvnrepository.com/artifact/com.konghq/unirest-java-bom -->
+            <dependency>
+                <groupId>com.konghq</groupId>
+                <artifactId>unirest-java-bom</artifactId>
+                <version>${unirest.vaersion}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -50,30 +62,41 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.github.yulichang</groupId>
+            <artifactId>mybatis-plus-join-boot-starter</artifactId>
+            <version>${mybatis-plus-join.version}</version>
+        </dependency>
         <!--  http工具       -->
+        <!-- https://mvnrepository.com/artifact/com.konghq/unirest-java-core -->
         <dependency>
             <groupId>com.konghq</groupId>
-            <artifactId>unirest-java</artifactId>
-            <version>${unirest.vaersion}</version>
+            <artifactId>unirest-java-core</artifactId>
         </dependency>
+        <!-- pick a JSON module if you want to parse JSON include one of these: -->
+        <!-- Google GSON -->
         <dependency>
-            <groupId>top.yumbo.music</groupId>
-            <artifactId>yumbo-music-utils</artifactId>
-            <version>${yumbo-music.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>fastjson</artifactId>
-                    <groupId>com.alibaba</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>jsoup</artifactId>
-                    <groupId>org.jsoup</groupId>
-                </exclusion>
-            </exclusions>
+            <groupId>com.konghq</groupId>
+            <artifactId>unirest-object-mappers-gson</artifactId>
+        </dependency>
+        <!-- OR maybe you like Jackson better? -->
+        <dependency>
+            <groupId>com.konghq</groupId>
+            <artifactId>unirest-objectmapper-jackson</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.16.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>3.0.3</version>
         </dependency>
         <dependency>
             <groupId>org.jsoup</groupId>
@@ -98,6 +121,16 @@
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>${mybatis-plus.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>mybatis-spring</artifactId>
+                    <groupId>org.mybatis</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>mybatis</artifactId>
+                    <groupId>org.mybatis</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!--   邮箱     -->
         <dependency>
@@ -105,14 +138,13 @@
             <artifactId>javax.mail</artifactId>
             <version>${javax.mail.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5</artifactId>
+            <version>5.2.1</version>
+        </dependency>
     </dependencies>
     <repositories>
-        <!--依赖源-->
-        <!--        <repository>-->
-        <!--            <id>spring-release</id>-->
-        <!--            <name>Spring release</name>-->
-        <!--            <url>https://repo.spring.io/release</url>-->
-        <!--        </repository>-->
         <repository>
             <id>public</id>
             <name>aliyun</name>

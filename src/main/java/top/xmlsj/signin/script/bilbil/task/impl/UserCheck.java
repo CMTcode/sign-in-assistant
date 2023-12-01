@@ -2,7 +2,9 @@ package top.xmlsj.signin.script.bilbil.task.impl;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import top.xmlsj.signin.model.message.service.SendService;
 import top.xmlsj.signin.script.bilbil.apiquery.ApiList;
@@ -11,7 +13,6 @@ import top.xmlsj.signin.script.bilbil.utils.HelpUtil;
 import top.xmlsj.signin.script.bilbil.utils.HttpUtil;
 import top.xmlsj.signin.task.SigninTask;
 
-import javax.annotation.Resource;
 
 /**
  * 登录检查
@@ -21,13 +22,14 @@ import javax.annotation.Resource;
  */
 @Slf4j
 @Component
+@RequiredArgsConstructor
 public class UserCheck implements SigninTask {
 
     private final String taskName = "登录检查";
 
     private int STATE = 0;
 
-    @Resource
+    @Autowired
     private SendService sendService;
 
 

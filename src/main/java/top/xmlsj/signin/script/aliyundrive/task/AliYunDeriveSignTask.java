@@ -4,6 +4,7 @@ import cn.hutool.http.Header;
 import cn.hutool.http.HttpRequest;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import top.xmlsj.signin.script.aliyundrive.constant.AliYunConst;
@@ -15,7 +16,6 @@ import top.xmlsj.signin.script.aliyundrive.domain.pojo.aliyunsigninfo.Status;
 import top.xmlsj.signin.script.aliyundrive.service.AliyundriveUserService;
 import top.xmlsj.signin.task.SigninTask;
 
-import javax.annotation.Resource;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -28,12 +28,12 @@ import java.util.Objects;
  */
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class AliYunDeriveSignTask implements SigninTask {
 
     private static final String NAME = "每日签到";
 
-    @Resource
-    private AliyundriveUserService userService;
+    private final AliyundriveUserService userService;
 
     /**
      * 任务实现

@@ -12,7 +12,6 @@ import top.xmlsj.signin.script.wangyi.domain.entity.MusicUser;
 import top.xmlsj.signin.script.wangyi.service.MusicUserService;
 import top.xmlsj.signin.task.SigninTask;
 
-import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -30,8 +29,8 @@ public class ListenToSongsTask implements SigninTask {
     private static final String NAME = "每日300首";
 
     private final MusicApi api;
-    @Resource
-    private MusicUserService userService;
+
+    private final MusicUserService userService;
 
     /**
      * 任务实现
