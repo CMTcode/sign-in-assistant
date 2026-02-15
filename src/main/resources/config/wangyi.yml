@@ -1,8 +1,0 @@
-# 网易云音乐配置
-# 是否开启 false 关闭  true 开启
-enabled: false
-#  填写网易云音乐cookie 支持多账号
-#  cookie中必须有MUSIC_U
-accounts:
-  - name: 小鱼
-    cookie: MUSIC_U=xxxxxxx;

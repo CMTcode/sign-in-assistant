@@ -24,7 +24,7 @@ docker build -t $img_name .
 
 echo "----------开始启动项目----------"
 
-docker run --name $name -d -v ${config_path}:/config -v ${log_path}:/logs ${img_name}
+docker run --name $name -d -v ${config_path}:/app/config -v ${log_path}:/app/logs ${img_name}
 docker ps
 docker logs --tail=100 ${name}
 
